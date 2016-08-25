@@ -1272,10 +1272,6 @@ resourceTypes:
       type: fhirHistory
       /{vid}:
         type: { fhirVersionedResource: { resourceName: AllergyIntolerance } }
-    /Condition:
-      type: fhirCompartment
-    /Observation:
-      type: fhirCompartment
   /_search:
     type: fhirSearch  
 
@@ -1316,10 +1312,6 @@ resourceTypes:
       type: fhirHistory
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Device } }
-    /Condition:
-      type: fhirCompartment
-    /Observation:
-      type: fhirCompartment
   /_search:
     type: fhirSearch  
     
@@ -1333,10 +1325,6 @@ resourceTypes:
       type: fhirHistory
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Encounter } }
-    /Condition:
-      type: fhirCompartment
-    /Observation:
-      type: fhirCompartment
   /_search:
     type: fhirSearch
 
@@ -1393,6 +1381,12 @@ resourceTypes:
       type: fhirCompartment
     /Observation:
       type: fhirCompartment
+    /MedicationOrder:
+      type: fhirCompartment
+    /Appointment:
+      type: fhirCompartment
+    /AllergyIntolerance:
+      type: fhirCompartment
   /_search:
     type: fhirSearch   
     
@@ -1406,9 +1400,9 @@ resourceTypes:
       type: fhirHistory
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Practitioner } }
-    /Condition:
+    /Schedule:
       type: fhirCompartment
-    /Observation:
+    /Appointment:
       type: fhirCompartment
   /_search:
     type: fhirSearch   
