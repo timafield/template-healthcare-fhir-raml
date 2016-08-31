@@ -6,35 +6,35 @@
 type: BackboneElement
 properties:
   link?:
-  type: array
-  items: 
-    type: BackboneElement
-    properties: 
-      relation: string
-      url: uri
+    type: array
+    items: 
+      type: BackboneElement
+      properties: 
+        relation: string
+        url: uri
   fullUrl?: uri
   search?:
-   type: BackboneElement
-   properties:
-     mode?:
-       type: code
-       enum: [match, include, outcome]
-     score?: decimal
+    type: BackboneElement
+    properties:
+      mode?:
+        type: code
+        enum: [match, include, outcome]
+      score?: decimal
   request?:
-   type: BackboneElement
-   properties:
-     method:
-       type: code
-       enum: [GET, PUT, POST, DELETE]
-     url: uri
-     ifNoneMatch?: string
-     ifModifiedSince?: instant
-     ifMatch: string
-     ifNoneExist: string
+    type: BackboneElement
+    properties:
+      method:
+        type: code
+        enum: [GET, PUT, POST, DELETE]
+      url: uri
+      ifNoneMatch?: string
+      ifModifiedSince?: instant
+      ifMatch: string
+      ifNoneExist: string
   response?:
-   type: object
-   properties:
-     status: string
-     location?: uri
-     etag?: string
-     lastModified?: instant
+    type: object
+    properties:
+      status: string
+      location?: uri
+      etag?: string
+      lastModified?: instant
