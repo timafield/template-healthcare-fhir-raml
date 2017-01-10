@@ -30,7 +30,9 @@ types:
   uri:                          !include dataTypes/primitives/uri.raml
   xhtml:                        !include dataTypes/primitives/markdown.raml
 
-  #Elements  
+  #Elements
+  Extension:                    !include dataTypes/elements/Extension.raml
+  Element:                      !include dataTypes/elements/Element.raml
   Address:                      !include dataTypes/elements/Address.raml
   Age:                          Quantity
   Annotation:                   !include dataTypes/elements/Annotation.raml
@@ -40,9 +42,7 @@ types:
   CodeableConcept:              !include dataTypes/elements/CodeableConcept.raml
   Conformance:                  !include dataTypes/resources/Conformance.raml
   ContactPoint:                 !include dataTypes/elements/ContactPoint.raml
-  Duration:                     !include dataTypes/elements/Duration.raml
-  Element:                      !include dataTypes/elements/Element.raml
-  Extension:                    !include dataTypes/elements/Extension.raml
+  Duration:                     !include dataTypes/elements/Duration.raml  
   HumanName:                    !include dataTypes/elements/HumanName.raml
   Identifier:                   !include dataTypes/elements/Identifier.raml
   Meta:                         !include dataTypes/elements/Meta.raml
@@ -56,7 +56,7 @@ types:
   SimpleQuantity:               Quantity
   Timing:                       !include dataTypes/elements/Timing.raml
   Quantity:                     !include dataTypes/elements/Quantity.raml
- 
+
   #Resources
   AllergyIntolerance:           !include dataTypes/resources/AllergyIntolerance.raml
   Appointment:                  !include dataTypes/resources/Appointment.raml
@@ -87,7 +87,7 @@ types:
   PractitionerEntry:            !include dataTypes/entries/PractitionerEntry.raml
   ScheduleEntry:                !include dataTypes/entries/ScheduleEntry.raml
   SlotEntry:                    !include dataTypes/entries/SlotEntry.raml
-      
+
   #Bundles
   AllergyIntoleranceBundle:     !include dataTypes/bundles/AllergyIntoleranceBundle.raml
   AppointmentBundle:            !include dataTypes/bundles/AppointmentBundle.raml
@@ -103,7 +103,7 @@ types:
   PractitionerBundle:           !include dataTypes/bundles/PractitionerBundle.raml
   ScheduleBundle:               !include dataTypes/bundles/ScheduleBundle.raml
   SlotBundle:                   !include dataTypes/bundles/SlotBundle.raml
-      
+
 
 resourceTypes:
   fhirResourceType:             !include resourceTypes/fhirResourceType.raml
@@ -123,7 +123,7 @@ traits:
   conformance:                  !include traits/conformance.raml
   history:                      !include traits/history.raml
   conditionalOperation:         !include traits/conditionalOperation.raml
-  
+
   # resource specific
   allergyIntoleranceSearch:
     queryParameters: !include queryParams/resources/allergyIntoleranceParams.yaml
@@ -154,23 +154,23 @@ traits:
   allergyIntolerancePOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/allergyIntoleranceParams.yaml 
+        properties: !include queryParams/resources/allergyIntoleranceParams.yaml
   appointmentPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/appointmentParams.yaml 
+        properties: !include queryParams/resources/appointmentParams.yaml
   conditionPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/conditionParams.yaml 
+        properties: !include queryParams/resources/conditionParams.yaml
   devicePOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/deviceParams.yaml 
+        properties: !include queryParams/resources/deviceParams.yaml
   encounterPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/encounterParams.yaml 
+        properties: !include queryParams/resources/encounterParams.yaml
   medicationPOSTSearch:
     body:
       application/x-www-form-urlencoded:
@@ -178,28 +178,28 @@ traits:
   medicationOrderPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/medicationOrderParams.yaml  
+        properties: !include queryParams/resources/medicationOrderParams.yaml
   patientPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/patientParams.yaml 
+        properties: !include queryParams/resources/patientParams.yaml
   observationPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/observationParams.yaml 
+        properties: !include queryParams/resources/observationParams.yaml
   practitionerPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/practitionerParams.yaml 
+        properties: !include queryParams/resources/practitionerParams.yaml
   schedulePOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/scheduleParams.yaml 
+        properties: !include queryParams/resources/scheduleParams.yaml
   slotPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/slotParams.yaml 
-  
+        properties: !include queryParams/resources/slotParams.yaml
+
 
 ### API definition ###
 
@@ -220,8 +220,8 @@ traits:
     is: [ allergyIntoleranceSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_allergyIntolerance_id.json, 
-        putExample: !include examples/requests/put_allergyIntolerance_id.json 
+        getSingleExample: !include examples/responses/get_allergyIntolerance_id.json,
+        putExample: !include examples/requests/put_allergyIntolerance_id.json
       }
     }
     /_history:
@@ -252,8 +252,8 @@ traits:
     is: [ appointmentSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_appointment_id.json, 
-        putExample: !include examples/requests/put_appointment_id.json 
+        getSingleExample: !include examples/responses/get_appointment_id.json,
+        putExample: !include examples/requests/put_appointment_id.json
       }
     }
     /_history:
@@ -284,8 +284,8 @@ traits:
     is: [ conditionSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_condition_id.json, 
-        putExample: !include examples/requests/put_condition_id.json 
+        getSingleExample: !include examples/responses/get_condition_id.json,
+        putExample: !include examples/requests/put_condition_id.json
       }
     }
 
@@ -317,8 +317,8 @@ traits:
    is: [ deviceSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_device_id.json, 
-        putExample: !include examples/requests/put_device_id.json 
+        getSingleExample: !include examples/responses/get_device_id.json,
+        putExample: !include examples/requests/put_device_id.json
       }
     }
    /_history:
@@ -349,8 +349,8 @@ traits:
    is: [ encounterSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_encounter_id.json, 
-        putExample: !include examples/requests/put_encounter_id.json 
+        getSingleExample: !include examples/responses/get_encounter_id.json,
+        putExample: !include examples/requests/put_encounter_id.json
       }
     }
    /_history:
@@ -381,7 +381,7 @@ traits:
    is: [ medicationSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_medication_id.json, 
+        getSingleExample: !include examples/responses/get_medication_id.json,
         putExample: !include examples/requests/put_medication_id.json
       }
     }
@@ -413,7 +413,7 @@ traits:
    is: [ medicationOrderSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_medicationOrder_id.json, 
+        getSingleExample: !include examples/responses/get_medicationOrder_id.json,
         putExample: !include examples/requests/put_medicationOrder_id.json
       }
     }
@@ -445,7 +445,7 @@ traits:
    is: [ observationSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_observation_id.json, 
+        getSingleExample: !include examples/responses/get_observation_id.json,
         putExample: !include examples/requests/put_observation_id.json
       }
     }
@@ -480,8 +480,8 @@ traits:
     is: [ patientSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_patient_id.json, 
-        putExample: !include examples/requests/put_patient_id.json 
+        getSingleExample: !include examples/responses/get_patient_id.json,
+        putExample: !include examples/requests/put_patient_id.json
       }
     }
     /_history:
@@ -509,8 +509,8 @@ traits:
       is: [ patientSearch ]
     post:
       is: [ patientPOSTSearch ]
- 
-            
+
+
 /Practitioner:
   type: {fhirResourceType: {
       postExample : !include examples/requests/post_practitioner.json,
@@ -528,8 +528,8 @@ traits:
     is: [ practitionerSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_practitioner_id.json, 
-        putExample: !include examples/requests/put_practitioner_id.json 
+        getSingleExample: !include examples/responses/get_practitioner_id.json,
+        putExample: !include examples/requests/put_practitioner_id.json
       }
     }
     /_history:
@@ -566,8 +566,8 @@ traits:
     is: [ scheduleSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_schedule_id.json, 
-        putExample: !include examples/requests/put_schedule_id.json 
+        getSingleExample: !include examples/responses/get_schedule_id.json,
+        putExample: !include examples/requests/put_schedule_id.json
       }
     }
     /_history:
@@ -598,8 +598,8 @@ traits:
     is: [ slotSearch ]
   /{id}:
     type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_slot_id.json, 
-        putExample: !include examples/requests/put_slot_id.json 
+        getSingleExample: !include examples/responses/get_slot_id.json,
+        putExample: !include examples/requests/put_slot_id.json
       }
     }
     /_history:
@@ -612,4 +612,3 @@ traits:
       is: [ slotSearch ]
     post:
       is: [ slotPOSTSearch ]
-
