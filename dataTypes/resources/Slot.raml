@@ -11,23 +11,23 @@ properties:
     description: External Ids for this item
     type: array
     items: Identifier
-  serviceCategory:
+  serviceCategory?:
     description: A broad categorisation of the service that is to be performed during this appointment
     type: CodeableConcept
-  serviceType:
+  serviceType?:
     description: |
       The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself).
       If provided then this overrides the value provided on the availability resource
     type: array
     items: CodeableConcept
-  speciality:
+  specialty?:
     description: The specialty of a practitioner that would be required to perform the service requested in this appointment
     type: array
     items: CodeableConcept
-  appointmentType:
+  appointmentType?:
     description: The style of appointment or patient that may be booked in the slot (not service type)
     type: CodeableConcept
-  schedule:
+  schedule?:
     description: The schedule resource that this slot defines an interval of status information
     type: Reference
   status:
