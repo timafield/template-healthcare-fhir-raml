@@ -6,6 +6,8 @@ uses:
 
 types:
 
+  Schedule: !include ../resources/Schedule.raml
+
   Address:
     type: Element
     description: |
@@ -32,10 +34,10 @@ types:
     type: Element
     description: A text note which also contains information about who made the statement and when.
     properties:
-      authorReference: Reference
-      authorString: string
+      authorReference?: Reference
+      authorString?: string
       time?: FHIR_primitive_types.dateTime
-      text?: string
+      text: string
 
   Attachment:
     type: Element
@@ -115,28 +117,28 @@ types:
       This is the content model of the extension as it appears in each resource.
     properties:
       url: FHIR_primitive_types.uri
-      valueInteger: integer
-      valueDecimal: FHIR_primitive_types.decimal
-      valueDateTime: FHIR_primitive_types.dateTime
-      valueDate: FHIR_primitive_types.date
-      valueInstant: FHIR_primitive_types.instant
-      valueString: string
-      valueUri: FHIR_primitive_types.uri
-      valueBoolean: boolean
-      valueCode: FHIR_primitive_types.code
-      valueBase64Binary: FHIR_primitive_types.base64Binary
-      valueCoding: Coding
-      valueCodeableConcept: CodeableConcept
-      valueAttachment: Attachment
-      valueIdentifier: Identifier
-      valueQuantity: Quantity
-      valueRange: Range
-      valuePeriod: Period
-      valueRatio: Range
-      valueHumanName: HumanName
-      valueAddress: Address
-      valueContactPoint: ContactPoint
-      # valueSchedule: !include ../resources/Schedule
+      valueInteger?: integer
+      valueDecimal?: FHIR_primitive_types.decimal
+      valueDateTime?: FHIR_primitive_types.dateTime
+      valueDate?: FHIR_primitive_types.date
+      valueInstant?: FHIR_primitive_types.instant
+      valueString?: string
+      valueUri?: FHIR_primitive_types.uri
+      valueBoolean?: boolean
+      valueCode?: FHIR_primitive_types.code
+      valueBase64Binary?: FHIR_primitive_types.base64Binary
+      valueCoding?: Coding
+      valueCodeableConcept?: CodeableConcept
+      valueAttachment?: Attachment
+      valueIdentifier?: Identifier
+      valueQuantity?: Quantity
+      valueRange?: Range
+      valuePeriod?: Period
+      valueRatio?: Range
+      valueHumanName?: HumanName
+      valueAddress?: Address
+      valueContactPoint?: ContactPoint
+      valueSchedule: Schedule
       valueReference: Reference
 
   HumanName:
@@ -254,12 +256,12 @@ types:
         type: array
         items: Coding
       when: FHIR_primitive_types.instant
-      whoUri: FHIR_primitive_types.uri
-      whoReference: Reference
-      onBehalfOfUri: FHIR_primitive_types.uri
-      onBehalfOfReference: Reference
-      contentType: FHIR_primitive_types.code
-      blob: FHIR_primitive_types.base64Binary
+      whoUri?: FHIR_primitive_types.uri
+      whoReference?: Reference
+      onBehalfOfUri?: FHIR_primitive_types.uri
+      onBehalfOfReference?: Reference
+      contentType?: FHIR_primitive_types.code
+      blob?: FHIR_primitive_types.base64Binary
 
   Timing:
     description: |
@@ -274,9 +276,9 @@ types:
       repeat?:
         type: Element
         properties:
-          boundsDuration: Duration
-          boundsRange: Range
-          boundsPeriod: Period
+          boundsDuration?: Duration
+          boundsRange?: Range
+          boundsPeriod?: Period
           count?: integer
           countMax?: integer
           duration?: FHIR_primitive_types.decimal
