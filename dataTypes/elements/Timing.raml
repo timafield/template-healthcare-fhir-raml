@@ -15,9 +15,9 @@ properties:
   repeat?:
     type: !include ./Element.raml
     properties:
-      boundsDuration: !include ./Duration.raml
-      boundsRange: !include ./Range.raml
-      boundsPeriod: !include ./Period.raml
+      boundsDuration?: !include ./Duration.raml
+      boundsRange?: !include ./Range.raml
+      boundsPeriod?: !include ./Period.raml
       count?: integer
       countMax?: integer
       duration?: !include ../primitives/decimal.raml

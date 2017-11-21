@@ -11,9 +11,9 @@ properties:
     type: array
     items: !include ./Coding.raml
   when: !include ../primitives/instant.raml
-  whoUri: !include ../primitives/uri.raml
-  whoReference: !include ./Reference.raml
-  onBehalfOfUri: !include ../primitives/uri.raml
-  onBehalfOfReference: !include ./Reference.raml
-  contentType: !include ../primitives/code.raml
-  blob: !include ../primitives/base64Binary.raml
+  whoUri?: !include ../primitives/uri.raml
+  whoReference?: !include ./Reference.raml
+  onBehalfOfUri?: !include ../primitives/uri.raml
+  onBehalfOfReference?: !include ./Reference.raml
+  contentType?: !include ../primitives/code.raml
+  blob?: !include ../primitives/base64Binary.raml
