@@ -3,12 +3,13 @@
 #This file is located at dataTypes/elements/Quantity.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: A measured amount (or an amount that can potentially be measured).
 properties:
-  value?: decimal
+  value?: !include ../primitives/decimal
   comparator?:
-    type: code
+    type: !include ../primitives/code.raml
     enum: ['<', '<=', '>=', '>']
   unit?: string
-  system?: uri
-  code?: code
+  system?: !include ../primitives/uri.raml
+  code?: !include ../primitives/code.raml

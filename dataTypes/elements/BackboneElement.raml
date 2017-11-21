@@ -3,6 +3,6 @@
 #This file is located at dataTypes/elements/BackboneElement.raml
 
 
-type: Element
+type: !include ./Element.raml
 properties:
-  modifierExtension?: Extension
+  modifierExtension?: !include ./Extension.raml

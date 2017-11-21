@@ -3,12 +3,14 @@
 #This file is located at dataTypes/elements/ContactPoint.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: |
+  Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc.
 properties:
   system?:
-    enum: [phone,fax,email,pager,other]
+    enum: [phone,fax,email,sms,pager,url,other]
   value?: string
   use?: string
   rank?:
-    type: positiveInt
-  period?: Period
+    type: !include ../primitives/positiveInt.raml
+  period?: !include ./Period.raml

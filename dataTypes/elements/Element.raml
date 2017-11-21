@@ -2,7 +2,9 @@
 
 #This file is located at dataTypes/elements/Element.raml
 
-
+type: object
 properties:
-  id?: id
-  extension?: Extension[]
+  id?: !include ../primitives/id.raml
+  extension?:
+    type: array
+    items: !include ./Extension.raml
