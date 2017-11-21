@@ -16,13 +16,8 @@ types:
   date:                         !include dataTypes/primitives/date.raml
   dateTime:                     !include dataTypes/primitives/dateTime.raml
   decimal:                      !include dataTypes/primitives/decimal.raml
-  gender:                       !include dataTypes/primitives/gender.raml
   instant:                      !include dataTypes/primitives/instant.raml
   markdown:                     !include dataTypes/primitives/markdown.raml
-  ObservationRelationshipType:  !include dataTypes/primitives/ObservationRelationshipType.raml
-  EncounterState:               !include dataTypes/primitives/EncounterState.raml
-  ObservationCode:              !include dataTypes/primitives/ObservationCode.raml
-  ObservationStatus:            !include dataTypes/primitives/ObservationStatus.raml
   positiveInt:                  !include dataTypes/primitives/positiveInt.raml
   time:                         !include dataTypes/primitives/time.raml
   UnitOfTime:                   !include dataTypes/primitives/UnitOfTime.raml
@@ -40,9 +35,8 @@ types:
   BackboneElement:              !include dataTypes/elements/BackboneElement.raml
   Coding:                       !include dataTypes/elements/Coding.raml
   CodeableConcept:              !include dataTypes/elements/CodeableConcept.raml
-  Conformance:                  !include dataTypes/resources/Conformance.raml
   ContactPoint:                 !include dataTypes/elements/ContactPoint.raml
-  Duration:                     !include dataTypes/elements/Duration.raml  
+  Duration:                     !include dataTypes/elements/Duration.raml
   HumanName:                    !include dataTypes/elements/HumanName.raml
   Identifier:                   !include dataTypes/elements/Identifier.raml
   Meta:                         !include dataTypes/elements/Meta.raml
@@ -66,7 +60,7 @@ types:
   Encounter:                    !include dataTypes/resources/Encounter.raml
   Slot:                         !include dataTypes/resources/Slot.raml
   Medication:                   !include dataTypes/resources/Medication.raml
-  MedicationOrder:              !include dataTypes/resources/MedicationOrder.raml
+  MedicationRequest:            !include dataTypes/resources/MedicationRequest.raml
   Observation:                  !include dataTypes/resources/Observation.raml
   Patient:                      !include dataTypes/resources/Patient.raml
   Practitioner:                 !include dataTypes/resources/Practitioner.raml
@@ -81,7 +75,7 @@ types:
   Entry:                        !include dataTypes/entries/Entry.raml #not to be used directly - use more specific types: <resourceName>Entry
   EncounterEntry:               !include dataTypes/entries/EncounterEntry.raml
   MedicationEntry:              !include dataTypes/entries/MedicationEntry.raml
-  MedicationOrderEntry:         !include dataTypes/entries/MedicationOrderEntry.raml
+  MedicationRequestEntry:       !include dataTypes/entries/MedicationRequestEntry.raml
   ObservationEntry:             !include dataTypes/entries/ObservationEntry.raml
   PatientEntry:                 !include dataTypes/entries/PatientEntry.raml
   PractitionerEntry:            !include dataTypes/entries/PractitionerEntry.raml
@@ -98,7 +92,7 @@ types:
   GeneralBundle:                !include dataTypes/bundles/GeneralBundle.raml
   ObservationBundle:            !include dataTypes/bundles/ObservationBundle.raml
   MedicationBundle:             !include dataTypes/bundles/MedicationBundle.raml
-  MedicationOrderBundle:        !include dataTypes/bundles/MedicationOrderBundle.raml
+  MedicationRequestBundle:      !include dataTypes/bundles/MedicationRequestBundle.raml
   PatientBundle:                !include dataTypes/bundles/PatientBundle.raml
   PractitionerBundle:           !include dataTypes/bundles/PractitionerBundle.raml
   ScheduleBundle:               !include dataTypes/bundles/ScheduleBundle.raml
@@ -120,7 +114,6 @@ traits:
   delete:                       !include traits/delete.raml
   create:                       !include traits/create.raml
   search:                       !include traits/search.raml
-  conformance:                  !include traits/conformance.raml
   history:                      !include traits/history.raml
   conditionalOperation:         !include traits/conditionalOperation.raml
 
@@ -137,8 +130,8 @@ traits:
     queryParameters: !include queryParams/resources/encounterParams.yaml
   medicationSearch:
     queryParameters: !include queryParams/resources/medicationParams.yaml
-  medicationOrderSearch:
-    queryParameters: !include queryParams/resources/medicationOrderParams.yaml
+  medicationRequestSearch:
+    queryParameters: !include queryParams/resources/medicationRequestParams.yaml
   observationSearch:
     queryParameters: !include queryParams/resources/observationParams.yaml
   patientSearch:
@@ -175,10 +168,10 @@ traits:
     body:
       application/x-www-form-urlencoded:
         properties: !include queryParams/resources/medicationParams.yaml
-  medicationOrderPOSTSearch:
+  medicationRequestPOSTSearch:
     body:
       application/x-www-form-urlencoded:
-        properties: !include queryParams/resources/medicationOrderParams.yaml
+        properties: !include queryParams/resources/medicationRequestParams.yaml
   patientPOSTSearch:
     body:
       application/x-www-form-urlencoded:
@@ -396,37 +389,37 @@ traits:
    post:
      is: [ medicationPOSTSearch ]
 
-/MedicationOrder:
+/MedicationRequest:
  type: {fhirResourceType: {
-      postExample : !include examples/requests/post_medicationOrder.json,
-      getExample  : !include examples/responses/get_medicationOrder.json,
+      postExample : !include examples/requests/post_medicationRequest.json,
+      getExample  : !include examples/responses/get_medicationRequest.json,
     }
   }
  get:
-   is: [ medicationOrderSearch ]
+   is: [ medicationRequestSearch ]
  put:
-   is: [ medicationOrderSearch, conditionalOperation ]
+   is: [ medicationRequestSearch, conditionalOperation ]
  delete:
-   is: [ medicationOrderSearch, conditionalOperation ]
+   is: [ medicationRequestSearch, conditionalOperation ]
  /_history:
-   type: { fhirHistory: { bundleName: MedicationOrderBundle } }
-   is: [ medicationOrderSearch ]
+   type: { fhirHistory: { bundleName: MedicationRequestBundle } }
+   is: [ medicationRequestSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_medicationOrder_id.json,
-        putExample: !include examples/requests/put_medicationOrder_id.json
+        getSingleExample: !include examples/responses/get_medicationRequest_id.json,
+        putExample: !include examples/requests/put_medicationRequest_id.json
       }
     }
    /_history:
-     type: { fhirHistory: { bundleName: MedicationOrderBundle } }
+     type: { fhirHistory: { bundleName: MedicationRequestBundle } }
      /{vid}:
-       type: { fhirVersionedResource: { resourceName: MedicationOrder } }
+       type: { fhirVersionedResource: { resourceName: MedicationRequest } }
  /_search:
-   type: { fhirSearch: { bundleName: MedicationOrderBundle } }
+   type: { fhirSearch: { bundleName: MedicationRequestBundle } }
    get:
-     is: [ medicationOrderSearch ]
+     is: [ medicationRequestSearch ]
    post:
-     is: [ medicationOrderPOSTSearch ]
+     is: [ medicationRequestPOSTSearch ]
 
 /Observation:
  type: {fhirResourceType: {
@@ -494,9 +487,9 @@ traits:
     /Observation:
       type: { fhirCompartment: { example: !include examples/responses/get_observation.json} }
       is: [ observationSearch ]
-    /MedicationOrder:
-      type: { fhirCompartment: { example: !include examples/responses/get_medicationOrder.json} }
-      is: [ medicationOrderSearch ]
+    /MedicationRequest:
+      type: { fhirCompartment: { example: !include examples/responses/get_MedicationRequest.json} }
+      is: [ MedicationRequestSearch ]
     /Appointment:
       type: { fhirCompartment: { example: !include examples/responses/get_appointment.json} }
       is: [ appointmentSearch ]

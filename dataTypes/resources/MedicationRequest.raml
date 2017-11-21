@@ -1,0 +1,118 @@
+#%RAML 1.0 DataType
+
+#This file is located at dataTypes/resources/MedicationRequest.raml
+
+description: Ordering of medication for patient or group
+type: DomainResource
+properties:
+  identifier?:
+    description: External ids for this request
+    type: Identifier[]
+  definition?:
+    description: Protocol or definition
+    type: Reference[]
+  basedOn?:
+    description: What request fulfills
+    type: Reference[]
+  groupIdentifier?:
+    description: Composite request this is part of
+    type: Identifier
+  status?:
+    description: Medical request status
+    type: code
+    enum: [active, on-hold, cancelled, completed, entered-in-error, stopped, draft, unknown]
+  intent:
+    description: Medical request intent
+    type: code
+    enum: [proposal, plan, order, instance-order]
+  category?:
+    description: Type of medication usage
+    type: CodeableConcept
+    enum: [inpatient, outpatient, community]
+  priority?:
+    description: Request priority
+    type: code
+    enum: [routine, urgent, stat, asap]
+  medicationCodeableConcept?:
+    deacription: Medication to be taken
+    type: CodeableConcept
+  medicationReference?:
+    deacription: Medication to be taken
+    type: Reference
+  subject:
+    description: Who or group medication request is for
+    type: Reference
+  context?:
+    description: Created during encounter/admission/stay
+    type: Reference
+  supportingInformation?:
+    description: Information to support ordering of the medication
+    type: Reference[]
+  authoredOn?:
+    description: When request was initially authored
+    type: dateTime
+  requester?:
+    description: |
+      Who/What requested the Request
+      + onBehalfOf can only be specified if agent is practitioner or device
+    type: BackboneElement
+    properties:
+      agent:
+        description: Who ordered the initial medication(s)
+        type: Reference
+      onBehalfOf?:
+        description: Organization agent is acting for
+        type: Reference
+  recorder?:
+    description: Person who entered the request
+    type: Reference
+  reasonCode?:
+    description: Reason or indication for writing the prescription
+    type: CodeableConcept[]
+  reasonReference?:
+    description: Condition or Observation that supports why the prescription is being written
+    type: Reference[]
+  note?:
+    description: Information about the prescription
+    type: Annotation[]
+  dosageInstruction?:
+    description: How the medication should be taken
+    type: Dosage[]
+  dispenseRequest?:
+    description: Medication supply authorization
+    type: BackboneElement
+    properties:
+      validityPeriod?:
+        description: Time period supply is authorized for
+        type: Period
+      numberOfRepeatsAllowed?:
+        description: Number of refills authorized
+        type: positiveInt
+      quantity?:
+        description: Amount of medication to supply per dispense
+        type: SimpleQuantity
+      expectedSupplyDuration?:
+        description: Number of days supply per dispense
+        type: Duration
+      performer?:
+        description: Intended dispenser
+        type: Reference
+  substitution?:
+    description: Any restrictions on medication substitution
+    type: BackboneElement
+    properties:
+      allowed:
+        description: Whether substitution is allowed or not
+        type: boolean
+      reason?:
+        description: Why should (not) substitution be made
+        type: CodeableConcept
+  priorPrescription?:
+    description: An order/prescription that is being replaced
+    type: Reference
+  detectedIssue?:
+    description: Clinical Issue with action
+    type: Reference[]
+  eventHistory?:
+    description: A list of events of interest in the lifecycle
+    type: Reference[]

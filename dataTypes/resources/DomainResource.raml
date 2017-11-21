@@ -2,13 +2,23 @@
 
 #This file is located at dataTypes/resources/DomainResource.raml
 
-
-type: Resource
+description: |
+  A resource with narrative, extensions, and contained resources
+  + If the resource is contained in another resource, it SHALL NOT contain nested Resources
+  + If the resource is contained in another resource, it SHALL NOT contain any narrative
+  + If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated
+  + If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource
+type: Resource.raml
 properties:
-  # where is resourceType defined in the spec?
-  resourceType: string
   text?:
+    description: Text summary of the resource, for human interpretation
     type: Narrative
-  contained?: Resource[]
-  extension?: Extension[]
-  modifierExtension?: Extension[]
+  contained?:
+    description: Contained, inline Resources
+    type: Resource[]
+  extension?:
+    description: Additional Content defined by implementations
+    type: Extension[]
+  modifierExtension?:
+    description: Extensions that cannot be ignored
+    type: Extension[]
