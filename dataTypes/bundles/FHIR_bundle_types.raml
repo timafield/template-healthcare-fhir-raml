@@ -1,0 +1,131 @@
+#%RAML 1.0 Library
+
+
+uses:
+  FHIR_entry_types: ../entries/FHIR_entry_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+
+types:
+
+  Resource: !include ../resources/Resource.raml
+
+  Bundle:
+    type: Resource
+    properties:
+      resourceType?: string
+      type:
+        type: FHIR_primitive_types.code
+        enum: [document, message, transaction,  transaction-response, batch, batch-response,  history, searchset, collection]
+      total?: FHIR_primitive_types.unsignedInt
+      link?:
+        type: array
+        items:
+          type: FHIR_element_types.BackboneElement
+          properties:
+            relation: string
+            url: FHIR_primitive_types.uri
+      signature?: FHIR_element_types.Signature
+
+  GeneralBundle:
+    type: Bundle
+    properties:
+      entry?:
+        type: array
+        items:
+          type: FHIR_element_types.BackboneElement
+          properties:
+            link?:
+              type: array
+              items:
+                type: FHIR_element_types.BackboneElement
+                properties:
+                  relation: string
+                  url: FHIR_primitive_types.uri
+            fullUrl?: FHIR_primitive_types.uri
+            resource?: Resource
+            search?:
+              type: FHIR_element_types.BackboneElement
+              properties:
+                mode?:
+                  type: FHIR_primitive_types.code
+                  enum: [match, include, outcome]
+                score?: FHIR_primitive_types.decimal
+            request?:
+              type: FHIR_element_types.BackboneElement
+              properties:
+                method:
+                  type: FHIR_primitive_types.code
+                  enum: [GET, PUT, POST, DELETE]
+                url: FHIR_primitive_types.uri
+                ifNoneMatch?: string
+                ifModifiedSince?: FHIR_primitive_types.instant
+                ifMatch: string
+                ifNoneExist: string
+            response?:
+              type: FHIR_element_types.BackboneElement
+              properties:
+                status: string
+                location?: FHIR_primitive_types.uri
+                etag?: string
+                lastModified?: FHIR_primitive_types.instant
+
+  AllergyIntolleranceBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.AllergyIntoleranceEntry[]
+
+  AppointmentBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.AppointmentEntry[]
+
+  ConditionBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.ConditionEntry[]
+
+  DeviceBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.DeviceEntry[]
+
+  EncounterBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.EncounterEntry[]
+
+  MedicationBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.MedicationEntry[]
+
+  MedicationRequestBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.MedicationRequestEntry[]
+
+  ObservationBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.ObservationEntry[]
+
+  PatientBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.PatientEntry[]
+
+  PractitionerBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.PrctitionerEntry[]
+
+  ScheduleBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.ScheduleEntry[]
+
+  SlotBundle:
+    type: Bundle
+    properties:
+      entry?: FHIR_entry_types.SlotEntry[]
