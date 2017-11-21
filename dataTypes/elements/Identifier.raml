@@ -3,10 +3,14 @@
 #This file is located at dataTypes/elements/Identifier.raml
 
 
+description: |
+  A numeric or alphanumeric string that is associated with a single object or entity within a given system.
+  Typically, identifiers are used to connect content in resources to external content available in other frameworks or protocols.
+  Identifiers are associated with objects, and may be changed or retired due to human or system process and errors.
 properties:
-  use?: code
-  type?: CodeableConcept
-  system?: uri
+  use?: !include ../primitives/code.raml
+  type?: !include ./CodeableConcept.raml
+  system?: !include ../primitives/uri.raml
   value?: string
-  period?: Period
-  assigner?: Reference
+  period?: !include ./Period.raml
+  assigner?: !include ./Reference.raml

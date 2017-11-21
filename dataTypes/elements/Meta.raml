@@ -3,10 +3,17 @@
 #This file is located at dataTypes/elements/Meta.raml
 
 
-type: Element
+description: |
+  Each resource contains an element "meta", of type "Meta", which is a set of metadata that provides technical and workflow context to the resource.
+  The metadata items are all optional, though some or all of them may be required in particular implementations or contexts of use.
+type: !include ./Element.raml
 properties:
-  versionId?: id
-  lastUpdated?: instant
-  profile?: uri
-  security?: Coding[]
-  tag?: Coding[]
+  versionId?: !include ../primitives/id.raml
+  lastUpdated?: !include ../primitives/instant.raml
+  profile?: !include ../primitives/uri.raml
+  security?:
+    type: array
+    items: !include ./Coding.raml
+  tag?:
+    type: array
+    items: !include ./Coding.raml

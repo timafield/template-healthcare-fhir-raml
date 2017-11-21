@@ -3,8 +3,10 @@
 #This file is located at dataTypes/elements/Annotation.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: A text note which also contains information about who made the statement and when.
 properties:
-  /^author(Reference|String)$/?: Reference | string
-  time?: dateTime
-  text?: string
+  authorReference?: !include ./Reference.raml
+  authorString?: string
+  time?: !include ../primitives/dateTime.raml
+  text: string

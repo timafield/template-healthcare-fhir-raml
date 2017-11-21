@@ -3,7 +3,10 @@
 #This file is located at dataTypes/elements/Reference.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: Many of the defined elements in a resource are references to other resources.
+  Using these references, the resources combine to build a web of information about healthcare.
 properties:
   reference?: string
+  identifier?: !include ./Identifier.raml
   display?: string

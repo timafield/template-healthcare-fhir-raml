@@ -3,6 +3,31 @@
 #This file is located at dataTypes/elements/Extension.raml
 
 
+description: |
+  Every element in a resource or data type includes an optional "extension" child element that may be present any number of times.
+  This is the content model of the extension as it appears in each resource.
 properties:
-  url: uri
-  /^value(Integer|Decimal|DateTime|Date|Instant|String|Uri|Boolean|Code|Markdown|Base64Binary|Coding|CodeableConcept|Attachment|Identifier|Quantity|Range|Period|Ratio|HumanName|Address|ContactPoint|Timing|Signature|Reference)$/: integer | decimal | dateTime | date | instant | string | uri | boolean | code | markdown | base64Binary | Coding | CodeableConcept | Attachment | Identifier | Quantity | Range | Period | Ratio | HumanName | Address | ContactPoint | Timing | Signature | Reference
+  url: !include ../primitives/uri.raml
+  valueInteger?: integer
+  valueDecimal?: !include ../primitives/decimal.raml
+  valueDateTime?: !include ../primitives/dateTime.raml
+  valueDate?: !include ../primitives/date.raml
+  valueInstant?: !include ../primitives/instant.raml
+  valueString?: string
+  valueUri?: !include ../primitives/uri.raml
+  valueBoolean?: boolean
+  valueCode?: !include ../primitives/code.raml
+  valueBase64Binary?: !include ../primitives/base64Binary.raml
+  valueCoding?: !include ./Coding.raml
+  valueCodeableConcept?: !include ./CodeableConcept.raml
+  valueAttachment?: !include ./Attachment.raml
+  valueIdentifier?: !include ./Identifier.raml
+  valueQuantity?: !include ./Quantity.raml
+  valueRange?: !include ./Range.raml
+  valuePeriod?: !include ./Period.raml
+  valueRatio?: !include ./Range.raml
+  valueHumanName?: !include ./HumanName.raml
+  valueAddress?: !include ./Address.raml
+  valueContactPoint?: !include ./ContactPoint.raml
+  valueSchedule?: !include ../resources/Schedule.raml
+  valueReference?: !include ./Reference.raml

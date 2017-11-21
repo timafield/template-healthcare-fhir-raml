@@ -3,7 +3,8 @@
 #This file is located at dataTypes/elements/Period.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: A time period defined by a start and end date/time.
 properties:
-  start?: dateTime
-  end?: dateTime
+  start?: !include ../primitives/dateTime.raml
+  end?: !include ../primitives/dateTime.raml

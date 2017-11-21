@@ -3,7 +3,8 @@
 #This file is located at dataTypes/elements/Range.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: A set of ordered Quantity values defined by a low and high limit.
 properties:
-  low?: integer
-  high?: integer
+  low?: !include ./Quantity.raml
+  high?: !include ./Quantity.raml

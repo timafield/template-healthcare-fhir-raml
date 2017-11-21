@@ -3,9 +3,12 @@
 #This file is located at dataTypes/elements/Coding.raml
 
 
+description: |
+  A Coding is a representation of a defined concept using a symbol from a defined "code system".
+  See http://hl7.org/fhir/STU3/terminologies.html for more details.
 properties:
-  system?: uri
+  system?: !include ../primitives/uri.raml
   version?: string
-  code?: code
+  code?: !include ../primitives/code.raml
   display?: string
   userSelected?: boolean

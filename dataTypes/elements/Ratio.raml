@@ -3,7 +3,8 @@
 #This file is located at dataTypes/elements/Ratio.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: A relationship between two Quantity values expressed as a numerator and a denominator.
 properties:
-  numerator?: Quantity
-  denominator?: Quantity
+  numerator?: !include ./Quantity.raml
+  denominator?: !include ./Quantity.raml

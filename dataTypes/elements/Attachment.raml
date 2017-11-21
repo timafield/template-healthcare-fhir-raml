@@ -3,17 +3,21 @@
 #This file is located at dataTypes/elements/Attachment.raml
 
 
-type: Element
+type: !include ./Element.raml
+description: |
+  This type is for containing or referencing attachments - additional data content defined in other formats.
+  The most common use of this type is to include images or reports in some report format such as PDF.
+  However it can be used for any data that has a MIME type.
 properties:
   contentType?:
-    type: code
+    type: !include ../primitives/code.raml
     description: Mime type of the content, with charset etc.
   language?:
-    type: code
+    type: !include ../primitives/code.raml
     description: Human language of the content (BCP-47)
-  data?: base64Binary
-  url?: uri
-  size?: unsignedInt
-  hash?: base64Binary
+  data?: !include ../primitives/base64Binary.raml
+  url?: !include ../primitives/uri.raml
+  size?: !include ../primitives/unsignedInt.raml
+  hash?: !include ../primitives/base64Binary.raml
   title?: string
-  creation?: dateTime
+  creation?: !include ../primitives/dateTime.raml
