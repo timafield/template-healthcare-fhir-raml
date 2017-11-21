@@ -6,19 +6,46 @@
 description: Information about an individual or animal receiving health care services
 type: DomainResource
 properties:
-  identifier?: Identifier[]
+  identifier?:
+    description: An identifier for this patient
+    type: Identifier[]
   active?:
-    type: boolean
     description: Whether this patient's record is in active use
-  name?: HumanName[]
-  telecom?: ContactPoint[]
-  gender?: gender
-  birthDate?: date
-  /^deceased(Boolean|DateTime)$/?: boolean | dateTime
-  address?: Address[]
-  maritalStatus?: CodeableConcept
-  /^multipleBirth(Boolean|Integer)$/?: boolean | integer
-  photo?: Attachment[]
+    type: boolean
+  name?:
+    description: A name associated with the patient
+    type: HumanName[]
+  telecom?:
+    description: A contact detail for the individual
+    type: ContactPoint[]
+  gender?:
+    description: Gender - male | female | other | unknown
+    type: code
+    enum: [male, female, other, unknown]
+  birthDate?:
+    description: The date of birth for the individual
+    type: date
+  deceasedBoolean?:
+    description: Indicates if the individual is deceased or not
+    type: boolean
+  deceasedDateTime?:
+    description: Indicates if the individual is deceased or not
+    type: dateTime
+  address?:
+    description: Addresses for the individual
+      type: Address[]
+  maritalStatus?:
+    description: Marital (civil) status of a patient
+    type: CodeableConcept
+  multipleBirthBoolean?:
+    description: Whether patient is part of a multiple birth
+    type: boolean
+  multipleBirthInteger?:
+    description: Whether patient is part of a multiple birth
+    type: integer
+  photo?:
+    description: Image of the patient
+    type: Attachment[]
   contact?:
     description: |
       A contact party (e.g. guardian, partner, friend) for the patient
@@ -27,41 +54,69 @@ properties:
     items:
       type: BackboneElement
       properties:
-        relationship?: CodeableConcept[]  
-        name?: HumanName
-        telecom?: ContactPoint[]
-        address?: Address
-        gender?: gender
-        organization?: Reference
+        relationship?:
+          description: The kind of relationship
+          type: CodeableConcept[]
+        name?:
+          description: A name associated with the contact person
+          type: HumanName
+        telecom?:
+          description: 	A contact detail for the person
+          type: ContactPoint[]
+        address?:
+          description: Address for the contact person
+          type: Address
+        gender?:
+          description: Gender - male | female | other | unknown
+          type: code
+          enum: [male, female, other, unknown]
+        organization?:
+          description: Organization that is associated with the contact
+          type: Reference
         period?:
-          description: |
-            The period during which this contact person or organization is valid to be contacted relating to this patient
+          description: The period during which this contact person or organization is valid to be contacted relating to this patient
           type: Period
   animal?:
     description: This patient is known to be an animal (non-human)
     type: BackboneElement
     properties:
-      species: CodeableConcept
-      breed?: CodeableConcept
-      genderStatus?: CodeableConcept
+      species:
+        description: E.g. Dog, Cow
+        type: CodeableConcept
+      breed?:
+        description: E.g. Poodle, Angus
+        type: CodeableConcept
+      genderStatus?:
+        description: E.g. Neutered, Intact
+        type: CodeableConcept
   communication?:
-    description: |
-      A list of Languages which may be used to communicate with the patient about his or her health
+    description: A list of Languages which may be used to communicate with the patient about his or her health
     type: array
     items:
       type: BackboneElement
       properties:
-        language: CodeableConcept
-        preferred?: boolean
-  careProvider?: Reference[]
+        language:
+          description: The language which can be used to communicate with the patient about his or her health
+          type: CodeableConcept
+        preferred?:
+          description: Language preference indicator
+          type: boolean
+  generalPractitioner?:
+    description: Patient's nominated primary care provider
+    type: Reference[]
   managingOrganization?:
     description: Organization that is the custodian of the patient record
     type: Reference
   link?:
     description: Link to another patient resource that concerns the same actual person
-    type: BackboneElement
-    properties:
-      other: Reference
-      type:
-        type: code
-        enum: [replace, refer, seealso]
+    type: array
+    items:
+      type: BackboneElement
+      properties:
+        other:
+          description: The other patient or related person resource that the link refers to
+          type: Reference
+        type:
+          description: Type of link - replaced-by | replaces | refer | seealso
+          type: code
+          enum: [replaced-by, replace, refer, seealso]

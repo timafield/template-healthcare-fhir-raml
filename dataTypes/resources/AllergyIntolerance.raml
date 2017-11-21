@@ -3,47 +3,105 @@
 #This file is located at dataTypes/resources/AllergyIntolerance.raml
 
 
-type: DomainResource
+type: DomainResource.raml
+description: Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
 properties:
-  identifier?: Identifier[]
-  onset?: dateTime
-  recordedDate?: dateTime
-  recorder?: Reference
-  patient: Reference
-  reporter?: Reference
-  substance: CodeableConcept
-  status?:
+  identifier?:
+    description: |
+      This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when
+      a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+    type: Identifier[]
+  clinicalStatus?:
+    description: The clinical status of the allergy or intolerance.
     type: code
-    enum: [active, unconfirmed, confirmed, inactive, resolved, refuted, entered-in-error]
-  criticality?:
+    enum: [active, inactive, resolved]
+  verificationStatus:
+    description: Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product).
     type: code
-    enum: [CRITL, CRITH, CRITU]
+    enum: [unconfirmed, confirmed, refuted, entered-in-error]
   type?:
+    description: Identification of the underlying physiological mechanism for the reaction risk.
     type: code
     enum: [allergy, intolerance]
   category?:
+    description: Category of the identified substance.
+    type: code[]
+    enum: [food, medication, environment, biologic]
+  criticality?:
+    description: Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance.
     type: code
-    enum: [food, medication, environment, other]
-  lastOccurence?: dateTime
-  note?: Annotation
+    enum: [low, high, unable-to-assess]
+  code?:
+    description: |
+      Code for an allergy or intolerance statement (either a positive or a negated/excluded statement). This may be a code for a substance or pharmaceutical
+      product that is considered to be responsible for the adverse reaction risk (e.g., "Latex"), an allergy or intolerance condition (e.g., "Latex allergy"),
+      or a negated/excluded code for a specific substance or class (e.g., "No latex allergy") or a general or categorical negated statement (e.g., "No known allergy", "No known drug allergies").
+    type: CodeableConcept
+  patient:
+    description: The patient who has the allergy or intolerance.
+    type: Reference
+  onsetDateTime?:
+    description: When allergy or intolerance was identified
+    type: dateTime
+  onsetAge?:
+    description: When allergy or intolerance was identified
+    type: Age
+  onsetPeriod?:
+    description: When allergy or intolerance was identified
+    type: Period
+  onsetRange?:
+    description: When allergy or intolerance was identified
+    type: Range
+  onsetString?:
+    description: When allergy or intolerance was identified
+    type: string
+  assertedDate?:
+    description: The date on which the existance of the AllergyIntolerance was first asserted or acknowledged.
+    type: dateTime
+  recorder?:
+    description: Individual who recorded the record and takes responsibility for its content.
+    type: Reference
+  asserter?:
+    description: The source of the information about the allergy that is recorded.
+    type: Reference
+  lastOccurence?:
+    description: Represents the date and/or time of the last known occurrence of a reaction event.
+    type: dateTime
+  note?:
+    description: Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
+    type: Annotation[]
   reaction?:
+    description: Details about each adverse reaction event linked to exposure to the identified substance.
     type: array
     items:
       type: BackboneElement
       properties:
-        substance?: CodeableConcept
-        certainty?:
-          type: code
-          enum: [unlikely, likely, confirmed]
+        substance?:
+          description: |
+            Identification of the specific substance (or pharmaceutical product) considered to be responsible for the Adverse Reaction event.
+            Note: the substance for a specific reaction may be different from the substance identified as the cause of the risk, but it must be consistent with it.
+            For instance, it may be a more specific substance (e.g. a brand medication) or a composite product that includes the identified substance. It must be clinically
+            safe to only process the 'code' and ignore the 'reaction.substance'.
+          type: CodeableConcept
         manifestation:
+          description: Clinical symptoms and/or signs that are observed or associated with the adverse reaction event.
           type: array
           minItems: 1
           items:
             type: CodeableConcept
-        description?: string
-        onset?: dateTime
+        description?:
+          description: Text description about the reaction as a whole, including details of the manifestation if required.
+          type: string
+        onset?:
+          description: Record of the date and/or time of the onset of the Reaction.
+          type: dateTime
         severity?:
+          description: Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations.
           type: code
           enum: [mild, moderate, severe]
-        exposureRoute?: CodeableConcept
-        note?: Annotation
+        exposureRoute?:
+          description: Identification of the route by which the subject was exposed to the substance.
+          type: CodeableConcept
+        note?:
+          description: Additional text about the adverse reaction event not captured in other fields.
+          type: Annotation

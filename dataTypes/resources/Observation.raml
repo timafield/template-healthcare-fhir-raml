@@ -2,58 +2,205 @@
 
 #This file is located at dataTypes/resources/Observation.raml
 
-
+description: |
+  Measurements and simple assertions
+  + If code is the same as a component code then the value element associated with the code SHALL NOT be present
+  + dataAbsentReason SHALL only be present if Observation.value[x] is not present
 type: DomainResource
 properties:
-  identifier?: Identifier[]
-  status: ObservationStatus
-  category?: CodeableConcept
-  code: CodeableConcept
-  subject?: Reference
-  encounter?: Reference
-  /^effective(DateTime|Period)$/?: dateTime | Period
-  issued?: instant
-  performer?: Reference[]
-  /^value(Quantity|CodeableConcept|String|Range|Ratio|SampledData|Attachment|Time|DateTime|Period)$/?: Quantity | CodeableConcept | string | Range | Ratio | SampledData | Attachment |  time | dateTime | Period
-  dataAbsentReason?: CodeableConcept
-  interpretation?: CodeableConcept
-  comments?: string
-  bodySite?: CodeableConcept
-  method?: CodeableConcept
-  specimen?: Reference
-  device?: Reference
+  identifier?:
+    description: Business Identifier for observation
+    type: Identifier[]
+  basedOn?:
+    description: Fulfills plan, proposal or order
+    type: Reference[]
+  status:
+    description: Observation status
+    type: code
+    enum: [registered, preliminary, final, ammended, corrected, cancelled, entered-in-error, unknown]
+  category?:
+    description: Classification of type of observation
+    type: CodeableConcept[]
+  code:
+    description: Type of observation (code / type)
+    type: CodeableConcept
+  subject?:
+    description: Who and/or what this is about
+    type: Reference
+  context?:
+    description: Healthcare event during which this observation is made
+    type: Reference
+  effectiveDateTime?:
+    description: Clinically relevant time for observation
+    type: dateTime
+  effectivePeriod?:
+    description: Clinically relevant time-period for observation
+    type: Period
+  issued?:
+    description: Date/Time this was made available
+    type: instant
+  performer?:
+    description: Who is responsible for the observation
+    type: Reference[]
+  valueQuantity?:
+    description: Actual result
+    type: Quantity
+  valueCodeableConcept?:
+    description: Actual result
+    type: CodeableConcept
+  valueString?:
+    description: Actual result
+    type: string
+  valueBoolean?:
+    description: Actual result
+    type: boolean
+  valueRange?:
+    description: Actual result
+    type: Range
+  valueRatio?:
+    description: Actual result
+    type: Ratio
+  valueSampledData?:
+    description: Actual result
+    type: SampledData
+  valueAttachment?:
+    description: Actual result
+    type: Attachment
+  valueTime?:
+    description: Actual result
+    type: time
+  valueDateTime?:
+    description: Actual result
+    type: dateTime
+  valuePeriod?:
+    description: Actual result
+    type: Period
+  dataAbsentReason?:
+    description: Why the result is missing
+    type: CodeableConcept
+  interpretation?:
+    description: High, low, normal, etc.
+    type: CodeableConcept
+  comment?:
+    description: Comments about result
+    type: string
+  bodySite?:
+    description: Observed body part
+    type: CodeableConcept
+  method?:
+    description: How it was done
+    type: CodeableConcept
+  specimen?:
+    description: Specimen used for this observation
+    type: Reference
+  device?:
+    description: (Measurement) Device
+    type: Reference
   referenceRange?:
+    description: |
+      Provides guide for interpretation
+      + Must have at least a low or a high or text
     type: array
     items:
       type: BackboneElement
       properties:
-        low?: SimpleQuantity
-        high?: SimpleQuantity
-        meaning?: CodeableConcept
-        age?: Range
-        text?: string
+        low?:
+          description: Low Range, if relevant
+          type: SimpleQuantity
+        high?:
+          description: High Range, if relevant
+          type: SimpleQuantity
+        type?:
+          description: Reference range qualifier
+          type: CodeableConcept
+        appliesTo?:
+          description: Reference range population
+          type: CodeableConcept[]
+        age?:
+          description: Applicable age range, if relevant
+          type: Range
+        text?:
+          description: Text based reference range in an observation
+          type: string
   related?:
+    description: Resource related to this observation
     type: array
     items:
       type: BackboneElement
       properties:
-        type?: ObservationRelationshipType
-        target: Reference
+        type?:
+          description: Observation relationship type
+          type: code
+          enum: [has-member, derived-from, sequel-to, replaces, qualified-by, interfered-by]
+        target:
+          description: Resource that is related to this one
+          type: Reference
   component?:
+    description: Component results
     type: array
     items:
       type: BackboneElement
       properties:
-        code: CodeableConcept
-        /^value(Quantity|CodeableConcept|String|Range|Ratio|SampledData|Attachment|Time|DateTime|Period)$/?: Quantity | CodeableConcept | string | Range | Ratio | SampledData | Attachment | time | dateTime | Period
-        dataAbsentReason?: CodeableConcept
+        code:
+          description: Type of component observation (code / type)
+          type: CodeableConcept
+        valueQuantity?:
+          description: Actual component result
+          type:	Quantity
+        valueCodeableConcept?:
+          description: Actual component result
+          type:	CodeableConcept
+        valueString?:
+          description: Actual component result
+          type: string
+        valueRange?:
+          description: Actual component result
+          type:	Range
+        valueRatio?:
+          description: Actual component result
+          type:	Ratio
+        valueSampledData?:
+          description: Actual component result
+          type:	SampledData
+        valueAttachment?:
+          description: Actual component result
+          type:	Attachment
+        valueTime?:
+          description: Actual component result
+          type: time
+        valueDateTime?:
+          description: Actual component result
+          type:	dateTime
+        valuePeriod?:
+          description: Actual component result
+          type:	Period
+        dataAbsentReason?:
+          description: Why the component result is missing
+          type:	CodeableConcept
+        interpretation?:
+          description: High, low, normal, etc.
+          type:	CodeableConcept
         referenceRange?:
+          description: Provides guide for interpretation of component result
           type: array
           items:
             type: BackboneElement
             properties:
-              low?: SimpleQuantity
-              high?: SimpleQuantity
-              meaning?: CodeableConcept
-              age?: Range
-              text?: string
+              low?:
+                description: Low Range, if relevant
+                type: SimpleQuantity
+              high?:
+                description: High Range, if relevant
+                type: SimpleQuantity
+              type?:
+                description: Reference range qualifier
+                type: CodeableConcept
+              appliesTo?:
+                description: Reference range population
+                type: CodeableConcept[]
+              age?:
+                description: Applicable age range, if relevant
+                type: Range
+              text?:
+                description: Text based reference range in an observation
+                type: string

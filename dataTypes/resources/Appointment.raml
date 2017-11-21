@@ -9,30 +9,83 @@ description: |
   Either start and end are specified, or neither
 type: DomainResource
 properties:
-  identifier?: Identifier[]
+  identifier?:
+    description: External Ids for this item
+    type: Identifier[]
   status:
     type: code
-    enum: [proposed, pending, booked, arrived, fulfilled, cancelled, noshow]
-  type?: CodeableConcept
-  reason?: CodeableConcept
-  priority?: unsignedInt
-  description?: string
-  start?: instant
-  end?: instant
-  minutesDuration?: positiveInt
-  slot?: Reference[]
-  comment?: string
+    enum: [proposed, pending, booked, arrived, fulfilled, cancelled, noshow, entered-in-error]
+  serviceCategory?:
+    description: A broad categorisation of the service that is to be performed during this appointment
+    type: CodeableConcept
+  serviceType?:
+    description: The specific service that is to be performed during this appointment
+    type: CodeableConcept[]
+  specialty?:
+    description: The specialty of a practitioner that would be required to perform the service requested in this appointment
+    type: CodeableConcept[]
+  appointmentType?:
+    description: The style of appointment or patient that has been booked in the slot (not service type)
+    type: CodeableConcept
+    enum: [CHECKUP, EMERGENCY, FOLLOWUP, ROUTINE, WALKIN]
+  reason?:
+    description: Reason this appointment is scheduled
+    type: CodeableConcept[]
+  indication?:
+    description: Reason the appointment is to takes place (resource)
+    type: Reference[]
+  priority?:
+    description: Used to make informed decisions if needing to re-prioritize
+    type: unsignedInt
+  description?:
+    description: Shown on a subject line in a meeting request, or appointment list
+    type: string
+  supportingInformation?:
+    description: Additional information to support the appointment
+    type: Reference[]
+  start?:
+    description: When appointment is to take place
+    type: instant
+  end?:
+    description: When appointment is to conclude
+    type: instant
+  minutesDuration?:
+    description: Can be less than start/end (e.g. estimate)
+    type: positiveInt
+  slot?:
+    description: The slots that this appointment is filling
+    type: Reference[]
+  created?:
+    description: The date that this appointment was initially created
+    type:	dateTime
+  comment?:
+    description:	Additional comments
+    type: string
+  incomingReferral?:
+    description: The ReferralRequest provided as information to allocate to the Encounter
+    type: Reference
   participant:
+    description: |
+      Participants involved in appointment
+      Either the type or actor on the participant SHALL be specified
     type: array
     minItems: 1
     items:
       type: BackboneElement
       properties:
-        type?: CodeableConcept
-        actor?: Reference
+        type?:
+          description: Role of participant in the appointment
+          type: CodeableConcept[]
+          enum: [ADM, ATND, CALLBCK, CON, DIS, ESC, REF, SPRF, PPRF, PART, translator, emergency]
+        actor?:
+          description: Person, Location/HealthcareService or Device
+          type: Reference
         required?:
           type: code
           enum: [required, optional, information-only]
         status:
           type: code
           enum: [accepted, declined, tentative, needs-action]
+  requestedPeriod?:
+    description: Potential date/time interval(s) requested to allocate the appointment within
+    type: Period[]
