@@ -2,15 +2,19 @@
 
 #This file is located at dataTypes/resources/Medication.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
+
 description: Definition of a Medication
-type: DomainResource
+type: !include DomainResource.raml
 properties:
   code?:
     description: Codes that identify this medication
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   status?:
     description: Medication status
-    type: code
+    type: FHIR_primitive_types.code
     enum: [active, inactive, entered-in-error]
   isBrand?:
     description: True if a brand
@@ -20,62 +24,62 @@ properties:
     type: boolean
   manufacturer?:
     description: Manufacturer of the item
-    type: Reference
+    type: FHIR_element_types.Reference
   form?:
     description: powder | tablets | capsule
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   ingredient?:
     description: Active or inactive ingredient
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         itemCodeableConcept?:
           description: The product contained
-          type: CodeableConcept
+          type: FHIR_element_types.CodeableConcept
         itemReference?:
           description: The product contained
-          type: Reference
+          type: FHIR_element_types.Reference
         isActive?:
           description: Active ingredient indicator
           type: boolean
         amount?:
           description: Quantity of ingredient present
-          type: Ratio
+          type: FHIR_element_types.Ratio
   package?:
     description: Details about packaged medications
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       container?:
         description: E.g. box, vial, blister-pack
-        type: CodeableConcept
+        type: FHIR_element_types.CodeableConcept
       content?:
         description: What is in the package
         type: array
         items:
-          type: BackboneElement
+          type: FHIR_element_types.BackboneElement
           properties:
             itemCodeableConcept?:
               description: The item in the package
-              type: CodeableConcept
+              type: FHIR_element_types.CodeableConcept
             itemReference?:
               description: The item in the package
-              type: Reference
+              type: FHIR_element_types.Reference
             amount?:
               description: Quantity present in the package
-              type: SimpleQuantity
+              type: FHIR_element_types.SimpleQuantity
       batch?:
         description: Identifies a single production run
         type: array
         items:
-          type: BackboneElement
+          type: FHIR_element_types.BackboneElement
           properties:
             lotNumber?:
               description: Identifier assigned to batch
               type: string
             expirationDate?:
               description: When batch will expire
-              type: dateTime
+              type: FHIR_primitive_types.dateTime
   image?:
     description: Picture of the medication
-    type: Attachment[]
+    type: FHIR_element_types.Attachment[]

@@ -2,117 +2,120 @@
 
 #This file is located at dataTypes/resources/MedicationRequest.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
+
 description: Ordering of medication for patient or group
-type: DomainResource
+type: !include DomainResource.raml
 properties:
   identifier?:
     description: External ids for this request
-    type: Identifier[]
+    type: FHIR_element_types.Identifier[]
   definition?:
     description: Protocol or definition
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   basedOn?:
     description: What request fulfills
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   groupIdentifier?:
     description: Composite request this is part of
-    type: Identifier
+    type: FHIR_element_types.Identifier
   status?:
     description: Medical request status
-    type: code
+    type: FHIR_primitive_types.code
     enum: [active, on-hold, cancelled, completed, entered-in-error, stopped, draft, unknown]
   intent:
     description: Medical request intent
-    type: code
+    type: FHIR_primitive_types.code
     enum: [proposal, plan, order, instance-order]
   category?:
     description: Type of medication usage
-    type: CodeableConcept
-    enum: [inpatient, outpatient, community]
+    type: FHIR_element_types.CodeableConcept
   priority?:
     description: Request priority
-    type: code
+    type: FHIR_primitive_types.code
     enum: [routine, urgent, stat, asap]
   medicationCodeableConcept?:
     deacription: Medication to be taken
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   medicationReference?:
     deacription: Medication to be taken
-    type: Reference
+    type: FHIR_element_types.Reference
   subject:
     description: Who or group medication request is for
-    type: Reference
+    type: FHIR_element_types.Reference
   context?:
     description: Created during encounter/admission/stay
-    type: Reference
+    type: FHIR_element_types.Reference
   supportingInformation?:
     description: Information to support ordering of the medication
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   authoredOn?:
     description: When request was initially authored
-    type: dateTime
+    type: FHIR_primitive_types.dateTime
   requester?:
     description: |
       Who/What requested the Request
       + onBehalfOf can only be specified if agent is practitioner or device
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       agent:
         description: Who ordered the initial medication(s)
-        type: Reference
+        type: FHIR_element_types.Reference
       onBehalfOf?:
         description: Organization agent is acting for
-        type: Reference
+        type: FHIR_element_types.Reference
   recorder?:
     description: Person who entered the request
-    type: Reference
+    type: FHIR_element_types.Reference
   reasonCode?:
     description: Reason or indication for writing the prescription
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   reasonReference?:
     description: Condition or Observation that supports why the prescription is being written
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   note?:
     description: Information about the prescription
-    type: Annotation[]
+    type: FHIR_element_types.Annotation[]
   dosageInstruction?:
     description: How the medication should be taken
-    type: Dosage[]
+    type: FHIR_element_types.Dosage[]
   dispenseRequest?:
     description: Medication supply authorization
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       validityPeriod?:
         description: Time period supply is authorized for
-        type: Period
+        type: FHIR_element_types.Period
       numberOfRepeatsAllowed?:
         description: Number of refills authorized
-        type: positiveInt
+        type: FHIR_primitive_types.positiveInt
       quantity?:
         description: Amount of medication to supply per dispense
-        type: SimpleQuantity
+        type: FHIR_element_types.SimpleQuantity
       expectedSupplyDuration?:
         description: Number of days supply per dispense
-        type: Duration
+        type: FHIR_element_types.Duration
       performer?:
         description: Intended dispenser
-        type: Reference
+        type: FHIR_element_types.Reference
   substitution?:
     description: Any restrictions on medication substitution
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       allowed:
         description: Whether substitution is allowed or not
         type: boolean
       reason?:
         description: Why should (not) substitution be made
-        type: CodeableConcept
+        type: FHIR_element_types.CodeableConcept
   priorPrescription?:
     description: An order/prescription that is being replaced
-    type: Reference
+    type: FHIR_element_types.Reference
   detectedIssue?:
     description: Clinical Issue with action
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   eventHistory?:
     description: A list of events of interest in the lifecycle
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
