@@ -2,63 +2,58 @@
 
 #This file is located at dataTypes/resources/Practitioner.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
 
-type: DomainResource
+type: !include DomainResource.raml
 description: |
   Practitioner covers all individuals who are engaged in the healthcare process and healthcare-related services as part of their formal responsibilities and this Resource is used for attribution of activities and responsibilities to these individuals.
 properties:
   identifier?:
     description: A identifier for the person as this agent
-    type: array
-    items: Identifier
+    type: FHIR_element_types.Identifier[]
   active?:
     description: Whether this practitioner's record is in active use
     type: boolean
   name?:
     description: The name(s) associated with the practitioner
-    type: array
-    items: HumanName
+    type: FHIR_element_types.HumanName[]
   telecom?:
     description: A contact detail for the practitioner (that apply to all roles)
-    type: array
-    items: ContactPoint
+    type: FHIR_element_types.ContactPoint[]
   address?:
     description: Address(es) of the practitioner that are not role specific (typically home address)
-    type: array
-    items: Address
+    type: FHIR_element_types.Address[]
   gender?:
     description: Practitioner gender
-    type: gender
-    enum: [male, female, other, unknown]
+    type: FHIR_primitive_types.gender
   birthDate?:
     description: The date  on which the practitioner was born
-    type: date
+    type: FHIR_primitive_types.date
   photo?:
     description: Image of the person
-    type: array
-    items: Attachment
+    type: FHIR_element_types.Attachment[]
   qualification?:
     description: |
       Qualifications obtained by training and certification
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         identifier?:
-          description:
-          type: array
-          items: Identifier
+          description: An identifier for this qualification for the practitioner
+          type: FHIR_element_types.Identifier[]
         code:
           description: Coded representation of the qualification
-          type: CodeableConcept
+          type: FHIR_element_types.CodeableConcept
         period?:
           description: |
             Period during which the qualification is valid
-          type: Period
+          type: FHIR_element_types.Period
         issuer?:
           description: Organization that regulates and issues the qualification
-          type: Reference
+          type: FHIR_element_types.Reference
   communication?:
     description: A language the practitioner is able to use in patient communication
-    type: array
-    items: CodeableConcept
+    type: FHIR_element_types.CodeableConcept[]

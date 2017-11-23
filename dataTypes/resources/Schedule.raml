@@ -2,42 +2,41 @@
 
 #This file is located at dataTypes/resources/Schedule.raml
 
+uses:
+  FHIR_element_types: ../elements/FHIR_element_types.raml
 
-type: DomainResource
+type: !include DomainResource.raml
 description: |
   A container for slots of time that may be available for booking appointments
 properties:
   identifier?:
     description: External Ids for this item
-    type: array
-    items: Identifier
+    type: FHIR_element_types.Identifier[]
   active?:
     description: Whether this schedule is in active use
     type: boolean
   serviceCategory?:
     description: A broad categorisation of the service that is to be performed during this appointment
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   serviceType?:
     description: |
       The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself).
       If provided then this overrides the value provided on the availability resource
-    type: array
-    items: CodeableConcept
+    type: FHIR_element_types.CodeableConcept[]
   specialty?:
     description: The specialty of a practitioner that would be required to perform the service requested in this appointment
-    type: array
-    items: CodeableConcept
+    type: FHIR_element_types.CodeableConcept[]
   actor:
     description: |
       The resource this Schedule resource is providing availability information for.
       These are expected to usually be one of HealthcareService, Location, Practitioner, PractitionerRole, Device, Patient or RelatedPerson
-    type: Reference
+    type: FHIR_element_types.Reference
   planningHorizon?:
     description: |
       The period of time that the slots that are attached to this Schedule resource cover (even if none exist).
       These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments.
       This does not define a "template" for planning outside these dates
-    type: Period
+    type: FHIR_element_types.Period
   comment?:
     description: |
       Comments on the availability to describe any extended information.

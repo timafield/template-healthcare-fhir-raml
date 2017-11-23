@@ -2,16 +2,19 @@
 
 #This file is located at dataTypes/resources/Device.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
 
 description: Item used in healthcare
-type: DomainResource
+type: !include DomainResource.raml
 properties:
   identifier?:
     description: Instance identifier
-    type: Identifier[]
+    type: FHIR_element_types.Identifier[]
   udi?:
     description: Unique Device Identifier (UDI) Barcode string
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       deviceIdentifier?:
         description: Mandatory fixed portion of UDI
@@ -21,27 +24,27 @@ properties:
         type: string
       jurisdiction?:
         description: Regional UDI authority
-        type: uri
+        type: FHIR_primitive_types.uri
       carrierHRF?:
         description: UDI Human Readable Barcode String
         type: string
       carrierAIDC?:
         description: UDI Machine Readable Barcode String
-        type: base64Binary
+        type: FHIR_primitive_types.base64Binary
       issuer?:
         description: UDI Issuing Organization
-        type: uri
+        type: FHIR_primitive_types.uri
       entryType?:
         description: Type of entry
-        type: code
+        type: FHIR_primitive_types.code
         enum: [barcode, rfid, manual, card, self-reported, unknown]
   status?:
     description: Device status
-    type: code
+    type: FHIR_primitive_types.code
     enum: [active , inactive, entered-in-error, unknown]
   type?:
     description: What kind of device this is
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   lotNumber?:
     description: Lot number of manufacture
     type: string
@@ -50,10 +53,10 @@ properties:
     type: string
   manufactureDate?:
     description: Date when the device was made
-    type: dateTime
+    type: FHIR_primitive_types.dateTime
   expirationDate?:
     description: Date and time of expiry of this device (if applicable)
-    type: dateTime
+    type: FHIR_primitive_types.dateTime
   model?:
     description: Model id assigned by the manufacturer
     type: string
@@ -62,22 +65,22 @@ properties:
     type: string
   patient?:
     description: Patient to whom Device is affixed
-    type: Reference
+    type: FHIR_element_types.Reference
   owner?:
     description: Organization responsible for device
-    type: Reference
+    type: FHIR_element_types.Reference
   contact?:
     description: Details for human/organization for support
-    type: ContactPoint[]
+    type: FHIR_element_types.ContactPoint[]
   location?:
     description: Where the resource is found
-    type: Reference
+    type: FHIR_element_types.Reference
   url?:
     description: Network address to contact device
-    type: uri
+    type: FHIR_primitive_types.uri
   note?:
     description: Device notes and comments
-    type: Annotation[]
+    type: FHIR_element_types.Annotation[]
   safety?:
     description: Safety Characteristics of Device
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]

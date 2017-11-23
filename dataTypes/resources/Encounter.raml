@@ -2,158 +2,157 @@
 
 #This file is located at dataTypes/resources/Encounter.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
 
 description: |
   An interaction during which services are provided to the patient
-type: DomainResource
+type: !include DomainResource.raml
 properties:
   identifier?:
     description: Identifier(s) by which this encounter is known
-    type: Identifier[]
+    type: FHIR_element_types.Identifier[]
   status:
     description: Encounter status
-    type: code
-    enum: [planned, arrived, triaged, in-progress, onleave, finished, cancelled, entered-in-error, unknown]
+    type: FHIR_primitive_types.code
   statusHistory?:
     description: 	List of past encounter statuses
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         status:
           description: Past encounter status
-          type: code
-          enum: [planned, arrived, triaged, in-progress, onleave, finished, cancelled, entered-in-error, unknown]
+          type: FHIR_primitive_types.code
         period:
           description: The time that the episode was in the specified status
-          type: Period
+          type: FHIR_element_types.Period
   class?:
     description: Encounter class
-    type: Coding
-    enum: [inpatient, outpatient, ambulatory, emergency]
+    type: FHIR_element_types.Coding
   classHistory?:
     description: 	List of past encounter classes
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         class:
           description: Past encounter class
-          type: Coding
-          enum: [inpatient, outpatient, ambulatory, emergency]
+          type: FHIR_element_types.Coding
         period:
           description: The time that the episode was in the specified class
-          type: Period
+          type: FHIR_element_types.Period
   type?:
     description: Specific type of encounter
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   priority?:
     description: Indicates the urgency of the encounter
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   subject?:
     description: The patient or group present at the encounter
-    type: Reference
+    type: FHIR_element_types.Reference
   episodeOfCare?:
     description: Episode(s) of care that this encounter should be recorded against
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   incomingReferral?:
     description: The ReferralRequest that initiated this encounter
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   participant?:
     description: List of participants involved in the encounter
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         type?:
           description: Role of participant in encounter
-          type: CodeableConcept[]
+          type: FHIR_element_types.CodeableConcept[]
         period?:
           description: Period of time during the encounter that the participant participated
-          type: Period
+          type: FHIR_element_types.Period
         individual?:
           description: Persons involved in the encounter other than the patient
-          type: Reference
+          type: FHIR_element_types.Reference
   appointment?:
     description: The appointment that scheduled this encounter
-    type: Reference
+    type: FHIR_element_types.Reference
   period?:
     description: The start and end time of the encounter
-    type: Period
+    type: FHIR_element_types.Period
   length?:
     description: Quantity of time the encounter lasted (less time absent)
-    type: Duration
+    type: FHIR_element_types.Duration
   reason?:
     description: Reason the encounter takes place (code)
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   diagnosis?:
     description: The list of diagnosis relevant to this encounter
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         condition:
           description: Reason the encounter takes place (resource)
-          type: Reference
+          type: FHIR_element_types.Reference
         role?:
           description: Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …)
-          type: CodeableConcept
+          type: FHIR_element_types.CodeableConcept
         rank?:
           description: Ranking of the diagnosis (for each role type)
-          type: positiveInt
+          type: FHIR_primitive_types.positiveInt
   account?:
     description: The set of accounts that may be used for billing for this Encounter
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   hospitalization?:
     description: Details about the admission to a healthcare service
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       preAdmissionIdentifier?:
         description: Pre-admission identifier
-        type: Identifier
+        type: FHIR_element_types.Identifier
       origin?:
         description: The location from which the patient came before admission
-        type: Reference
+        type: FHIR_element_types.Reference
       admitSource?:
         description: From where patient was admitted (physician referral, transfer)
-        type: CodeableConcept
+        type: FHIR_element_types.CodeableConcept
       reAdmission?:
         description: The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission
-        type: CodeableConcept
+        type: FHIR_element_types.CodeableConcept
       dietPreference?:
         description: Diet preferences reported by the patient
-        type: CodeableConcept[]
+        type: FHIR_element_types.CodeableConcept[]
       specialCourtesy?:
         description: Special courtesies (VIP, board member)
-        type: CodeableConcept[]
+        type: FHIR_element_types.CodeableConcept[]
       specialArrangement?:
         description: Wheelchair, translator, stretcher, etc.
-        type: CodeableConcept[]
+        type: FHIR_element_types.CodeableConcept[]
       destination?:
         description: Location to which the patient is discharged
-        type: Reference
+        type: FHIR_element_types.Reference
       dischargeDisposition?:
         description: Category or kind of location after discharge
-        type: CodeableConcept
+        type: FHIR_element_types.CodeableConcept
   location?:
     description: 	List of locations where the patient has been
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         location:
           description: Location the encounter takes place
-          type: Reference
+          type: FHIR_element_types.Reference
         status?:
           description: Encounter location status
-          type: code
+          type: FHIR_primitive_types.code
           enum: [planned, active, reserved, completed]
         period?:
           description: Time period during which the patient was present at the location
-          type: Period
+          type: FHIR_element_types.Period
   serviceProvider?:
     description: The custodian organization of this Encounter record
-    type: Reference
+    type: FHIR_element_types.Reference
   partOf?:
     description: Another Encounter this encounter is part of
-    type: Reference
+    type: FHIR_element_types.Reference

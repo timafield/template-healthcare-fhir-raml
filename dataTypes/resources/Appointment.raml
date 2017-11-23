@@ -2,68 +2,70 @@
 
 #This file is located at dataTypes/resources/Appointment.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
 
 description: |
   A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s)
   Only proposed or cancelled appointments can be missing start/end dates
   Either start and end are specified, or neither
-type: DomainResource
+type: !include DomainResource.raml
 properties:
   identifier?:
     description: External Ids for this item
-    type: Identifier[]
+    type: FHIR_element_types.Identifier[]
   status:
-    type: code
+    type: FHIR_primitive_types.code
     enum: [proposed, pending, booked, arrived, fulfilled, cancelled, noshow, entered-in-error]
   serviceCategory?:
     description: A broad categorisation of the service that is to be performed during this appointment
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   serviceType?:
     description: The specific service that is to be performed during this appointment
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   specialty?:
     description: The specialty of a practitioner that would be required to perform the service requested in this appointment
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   appointmentType?:
     description: The style of appointment or patient that has been booked in the slot (not service type)
-    type: CodeableConcept
-    enum: [CHECKUP, EMERGENCY, FOLLOWUP, ROUTINE, WALKIN]
+    type: FHIR_element_types.CodeableConcept
   reason?:
     description: Reason this appointment is scheduled
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   indication?:
     description: Reason the appointment is to takes place (resource)
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   priority?:
     description: Used to make informed decisions if needing to re-prioritize
-    type: unsignedInt
+    type: FHIR_primitive_types.unsignedInt
   description?:
     description: Shown on a subject line in a meeting request, or appointment list
     type: string
   supportingInformation?:
     description: Additional information to support the appointment
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   start?:
     description: When appointment is to take place
-    type: instant
+    type: FHIR_primitive_types.instant
   end?:
     description: When appointment is to conclude
-    type: instant
+    type: FHIR_primitive_types.instant
   minutesDuration?:
     description: Can be less than start/end (e.g. estimate)
-    type: positiveInt
+    type: FHIR_primitive_types.positiveInt
   slot?:
     description: The slots that this appointment is filling
-    type: Reference[]
+    type: FHIR_element_types.Reference[]
   created?:
     description: The date that this appointment was initially created
-    type:	dateTime
+    type:	FHIR_primitive_types.dateTime
   comment?:
     description:	Additional comments
     type: string
   incomingReferral?:
     description: The ReferralRequest provided as information to allocate to the Encounter
-    type: Reference
+    type: FHIR_element_types.Reference
   participant:
     description: |
       Participants involved in appointment
@@ -71,21 +73,20 @@ properties:
     type: array
     minItems: 1
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         type?:
           description: Role of participant in the appointment
-          type: CodeableConcept[]
-          enum: [ADM, ATND, CALLBCK, CON, DIS, ESC, REF, SPRF, PPRF, PART, translator, emergency]
+          type: FHIR_element_types.CodeableConcept[]
         actor?:
           description: Person, Location/HealthcareService or Device
-          type: Reference
+          type: FHIR_element_types.Reference
         required?:
-          type: code
+          type: FHIR_primitive_types.code
           enum: [required, optional, information-only]
         status:
-          type: code
+          type: FHIR_primitive_types.code
           enum: [accepted, declined, tentative, needs-action]
   requestedPeriod?:
     description: Potential date/time interval(s) requested to allocate the appointment within
-    type: Period[]
+    type: FHIR_element_types.Period[]

@@ -2,23 +2,27 @@
 
 #This file is located at dataTypes/resources/DomainResource.raml
 
+uses:
+  FHIR_element_types: ../elements/FHIR_element_types.raml
+
 description: |
   A resource with narrative, extensions, and contained resources
   + If the resource is contained in another resource, it SHALL NOT contain nested Resources
   + If the resource is contained in another resource, it SHALL NOT contain any narrative
   + If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated
   + If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource
-type: Resource.raml
+type: !include Resource.raml
 properties:
   text?:
     description: Text summary of the resource, for human interpretation
-    type: Narrative
+    type: FHIR_element_types.Narrative
   contained?:
     description: Contained, inline Resources
-    type: Resource[]
+    type: array
+    items: !include Resource.raml
   extension?:
     description: Additional Content defined by implementations
-    type: Extension[]
+    type: FHIR_element_types.Extension[]
   modifierExtension?:
     description: Extensions that cannot be ignored
-    type: Extension[]
+    type: FHIR_element_types.Extension[]

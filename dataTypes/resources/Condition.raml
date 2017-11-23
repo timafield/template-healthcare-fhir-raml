@@ -2,108 +2,110 @@
 
 #This file is located at dataTypes/resources/Condition.raml
 
+uses:
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../elements/FHIR_element_types.raml
 
 description: |
   Detailed information about conditions, problems or diagnoses
   + If condition is abated, then clinicalStatus must be either inactive, resolved, or remission
   + Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error
-type: DomainResource
+type: !include DomainResource.raml
 properties:
   identifier?:
     description: External Ids for this condition
-    type: Identifier[]
+    type: FHIR_element_types.Identifier[]
   clinicalStatus?:
     description: active | recurrence | inactive | remission | resolved
-    type: code
+    type: FHIR_primitive_types.code
     enum: [active, recurrence, inactive, remission, resolved]
   verificationStatus?:.
     description: provisional | differential | confirmed | refuted | entered-in-error | unknown
-    type: code
+    type: FHIR_primitive_types.code
     enum: [provisional, differential, confirmed, refuted, entered-in-error, unknown]
   category?:
     description: problem-list-item | encounter-diagnosis
-    type: CodeableConcept[]
-    enum: [problem-list-item, encounter-diagnosis]
+    type: FHIR_element_types.CodeableConcept[]
   severity?:
     description: Subjective severity of condition
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   code?:
     description: Identification of the condition, problem or diagnosis
-    type: CodeableConcept
+    type: FHIR_element_types.CodeableConcept
   bodySite?:
     description: Anatomical location, if relevant
-    type: CodeableConcept[]
+    type: FHIR_element_types.CodeableConcept[]
   subject:
     description: Who has the condition?
-    type: Reference
+    type: FHIR_element_types.Reference
   context?:
     description: Encounter or episode when condition first asserted
-    type: Reference
+    type: FHIR_element_types.Reference
   onsetDateTime?:
     description: Estimated or actual date, date-time, or age
-    type: dateTime
+    type: FHIR_primitive_types.dateTime
   onsetAge?:
     description: Estimated or actual date, date-time, or age
-    type: Age
+    type: FHIR_element_types.Age
   onsetPeriod?:
     description: Estimated or actual date, date-time, or age
-    type: Period
+    type: FHIR_element_types.Period
   onsetRange?:
     description: Estimated or actual date, date-time, or age
-    type: Range
+    type: FHIR_element_types.Range
   onsetString?:
     description: Estimated or actual date, date-time, or age
     type: string
   abatementDateTime?:
     description: If/when in resolution/remission
-    type: dateTime
+    type: FHIR_primitive_types.dateTime
   abatementAge?:
     description: If/when in resolution/remission
-    type: Age
+    type: FHIR_element_types.Age
   abatementBoolean?:
     description: If/when in resolution/remission
     type: boolean
   abatementPeriod?:
     description: If/when in resolution/remission
-    type: Period
+    type: FHIR_element_types.Period
   abatementRange?:
     description: If/when in resolution/remission
-    type: Range
+    type: FHIR_element_types.Range
   abatementString?:
     description: If/when in resolution/remission
     type: string
   assertedDate?:
     description: Date record was believed accurate
-    type: dateTime
+    type: FHIR_primitive_types.dateTime
   asserter?:
     description: Person who asserts this condition
-    type: Reference
+    type: FHIR_element_types.Reference
   stage?:
     description: |
       Stage/grade, usually assessed formally
       + Stage SHALL have summary or assessment
-    type: BackboneElement
+    type: FHIR_element_types.BackboneElement
     properties:
       summary?:
         description: Simple summary (disease specific)
-        type: CodeableConcept
+        type: FHIR_element_types.CodeableConcept
       asessment?:
         description: Formal record of assessment
-        type: Reference[]
+        type: FHIR_element_types.Reference[]
   evidence?:
     description: |
       Supporting evidence
       + evidence SHALL have code or details
     type: array
     items:
-      type: BackboneElement
+      type: FHIR_element_types.BackboneElement
       properties:
         code?:
           description: Manifestation/symptom
-          type: CodeableConcept[]
+          type: FHIR_element_types.CodeableConcept[]
         detail?:
           description: Supporting information found elsewhere
-          type: Reference[]
+          type: FHIR_element_types.Reference[]
   note?:
     description: Additional information about the Condition
-    type: Annotation[]
+    type: FHIR_element_types.Annotation[]
