@@ -17,7 +17,7 @@ properties:
     description: Encounter status
     type: FHIR_primitive_types.code
   statusHistory?:
-    description: 	List of past encounter statuses
+    description: List of past encounter statuses
     type: array
     items:
       type: FHIR_element_types.BackboneElement
@@ -32,7 +32,7 @@ properties:
     description: Encounter class
     type: FHIR_element_types.Coding
   classHistory?:
-    description: 	List of past encounter classes
+    description: List of past encounter classes
     type: array
     items:
       type: FHIR_element_types.BackboneElement
@@ -135,10 +135,10 @@ properties:
         description: Category or kind of location after discharge
         type: FHIR_element_types.CodeableConcept
   location?:
-    description: 	List of locations where the patient has been
+    description: List of locations where the patient has been
     type: array
     items:
-      type: FHIR_element_types.BackboneElement
+      type:   FHIR_element_types.BackboneElement
       properties:
         location:
           description: Location the encounter takes place

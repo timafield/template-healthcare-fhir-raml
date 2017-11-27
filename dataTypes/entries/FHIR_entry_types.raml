@@ -6,22 +6,6 @@ uses:
 
 types:
 
-  AllergyIntollerance: !include ../resources/AllergyIntolerance.raml
-  Appointment: !include ../resources/Appointment.raml
-  Condition: !include ../resources/Condition.raml
-  Conformance: !include ../resources/Conformance.raml
-  Device: !include ../resources/Device.raml
-  DomainResource: !include ../resources/DomainResource.raml
-  Encounter: !include ../resources/Encounter.raml
-  Medication: !include ../resources/Medication.raml
-  MedicationRequest: !include ../resources/MedicationRequest.raml
-  Observation: !include ../resources/Observation.raml
-  Patient: !include ../resources/Patient.raml
-  Practitioner: !include ../resources/Practitioner.raml
-  Resource: !include ../resources/Resource.raml
-  Schedule: !include ../resources/Schedule.raml
-  Slot: !include ../resources/Slot.raml
-
   Entry:
     type: FHIR_element_types.BackboneElement
     properties:
@@ -58,6 +42,21 @@ types:
           location?: FHIR_primitive_types.uri
           etag?: string
           lastModified?: FHIR_primitive_types.instant
+  
+  AllergyIntollerance: !include ../resources/AllergyIntolerance.raml
+  Appointment: !include ../resources/Appointment.raml
+  Condition: !include ../resources/Condition.raml
+  Device: !include ../resources/Device.raml
+  DomainResource: !include ../resources/DomainResource.raml
+  Encounter: !include ../resources/Encounter.raml
+  Medication: !include ../resources/Medication.raml
+  MedicationRequest: !include ../resources/MedicationRequest.raml
+  Observation: !include ../resources/Observation.raml
+  Patient: !include ../resources/Patient.raml
+  Practitioner: !include ../resources/Practitioner.raml
+  Resource: !include ../resources/Resource.raml
+  Schedule: !include ../resources/Schedule.raml
+  Slot: !include ../resources/Slot.raml
 
   AllergyIntoleranceEntry:
     type: Entry
