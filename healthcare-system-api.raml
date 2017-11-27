@@ -5,117 +5,198 @@ baseUri: http://localhost:8081/api
 mediaType: [application/xml+fhir, application/json+fhir]
 
 
+uses: 
+  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
+  FHIR_element_types: ../primitives/FHIR_element_types.raml
+  FHIR_entry_types: ../primitives/FHIR_entry_types.raml
+  FHIR_bundle_types: ../primitives/FHIR_bundle_types.raml
 
-
-types:
-
-  #Primitives
-  id:                           !include dataTypes/primitives/id.raml
-  base64Binary:                 string
-  code:                         !include dataTypes/primitives/code.raml
-  date:                         !include dataTypes/primitives/date.raml
-  dateTime:                     !include dataTypes/primitives/dateTime.raml
-  decimal:                      !include dataTypes/primitives/decimal.raml
-  instant:                      !include dataTypes/primitives/instant.raml
-  markdown:                     !include dataTypes/primitives/markdown.raml
-  positiveInt:                  !include dataTypes/primitives/positiveInt.raml
-  time:                         !include dataTypes/primitives/time.raml
-  UnitOfTime:                   !include dataTypes/primitives/UnitOfTime.raml
-  unsignedInt:                  !include dataTypes/primitives/unsignedInt.raml
-  uri:                          !include dataTypes/primitives/uri.raml
-  xhtml:                        !include dataTypes/primitives/markdown.raml
-
-  #Elements
-  Extension:                    !include dataTypes/elements/Extension.raml
-  Element:                      !include dataTypes/elements/Element.raml
-  Address:                      !include dataTypes/elements/Address.raml
-  Age:                          Quantity
-  Annotation:                   !include dataTypes/elements/Annotation.raml
-  Attachment:                   !include dataTypes/elements/Attachment.raml
-  BackboneElement:              !include dataTypes/elements/BackboneElement.raml
-  Coding:                       !include dataTypes/elements/Coding.raml
-  CodeableConcept:              !include dataTypes/elements/CodeableConcept.raml
-  ContactPoint:                 !include dataTypes/elements/ContactPoint.raml
-  Duration:                     !include dataTypes/elements/Duration.raml
-  HumanName:                    !include dataTypes/elements/HumanName.raml
-  Identifier:                   !include dataTypes/elements/Identifier.raml
-  Meta:                         !include dataTypes/elements/Meta.raml
-  Narrative:                    !include dataTypes/elements/Narrative.raml
-  Period:                       !include dataTypes/elements/Reference.raml
-  Ratio:                        !include dataTypes/elements/Ratio.raml
-  Range:                        !include dataTypes/elements/Range.raml
-  Reference:                    !include dataTypes/elements/Reference.raml
-  SampledData:                  !include dataTypes/elements/SampledData.raml
-  Signature:                    !include dataTypes/elements/Signature.raml
-  SimpleQuantity:               Quantity
-  Timing:                       !include dataTypes/elements/Timing.raml
-  Quantity:                     !include dataTypes/elements/Quantity.raml
-
-  #Resources
-  AllergyIntolerance:           !include dataTypes/resources/AllergyIntolerance.raml
-  Appointment:                  !include dataTypes/resources/Appointment.raml
-  Condition:                    !include dataTypes/resources/Condition.raml
-  Device:                       !include dataTypes/resources/Device.raml
-  DomainResource:               !include dataTypes/resources/DomainResource.raml
-  Encounter:                    !include dataTypes/resources/Encounter.raml
-  Slot:                         !include dataTypes/resources/Slot.raml
-  Medication:                   !include dataTypes/resources/Medication.raml
-  MedicationRequest:            !include dataTypes/resources/MedicationRequest.raml
-  Observation:                  !include dataTypes/resources/Observation.raml
-  Patient:                      !include dataTypes/resources/Patient.raml
-  Practitioner:                 !include dataTypes/resources/Practitioner.raml
-  Resource:                     !include dataTypes/resources/Resource.raml
-  Schedule:                     !include dataTypes/resources/Schedule.raml
-
-  #Entries
-  AllergyIntoleranceEntry:      !include dataTypes/entries/AllergyIntoleranceEntry.raml
-  AppointmentEntry:             !include dataTypes/entries/AppointmentEntry.raml
-  ConditionEntry:               !include dataTypes/entries/ConditionEntry.raml
-  DeviceEntry:                  !include dataTypes/entries/DeviceEntry.raml
-  Entry:                        !include dataTypes/entries/Entry.raml #not to be used directly - use more specific types: <resourceName>Entry
-  EncounterEntry:               !include dataTypes/entries/EncounterEntry.raml
-  MedicationEntry:              !include dataTypes/entries/MedicationEntry.raml
-  MedicationRequestEntry:       !include dataTypes/entries/MedicationRequestEntry.raml
-  ObservationEntry:             !include dataTypes/entries/ObservationEntry.raml
-  PatientEntry:                 !include dataTypes/entries/PatientEntry.raml
-  PractitionerEntry:            !include dataTypes/entries/PractitionerEntry.raml
-  ScheduleEntry:                !include dataTypes/entries/ScheduleEntry.raml
-  SlotEntry:                    !include dataTypes/entries/SlotEntry.raml
-
-  #Bundles
-  AllergyIntoleranceBundle:     !include dataTypes/bundles/AllergyIntoleranceBundle.raml
-  AppointmentBundle:            !include dataTypes/bundles/AppointmentBundle.raml
-  Bundle:                       !include dataTypes/bundles/Bundle.raml  #not to be used directly - use more specific types: GeneralBundle or <resourceName>Bundle
-  ConditionBundle:              !include dataTypes/bundles/ConditionBundle.raml
-  DeviceBundle:                 !include dataTypes/bundles/DeviceBundle.raml
-  EncounterBundle:              !include dataTypes/bundles/EncounterBundle.raml
-  GeneralBundle:                !include dataTypes/bundles/GeneralBundle.raml
-  ObservationBundle:            !include dataTypes/bundles/ObservationBundle.raml
-  MedicationBundle:             !include dataTypes/bundles/MedicationBundle.raml
-  MedicationRequestBundle:      !include dataTypes/bundles/MedicationRequestBundle.raml
-  PatientBundle:                !include dataTypes/bundles/PatientBundle.raml
-  PractitionerBundle:           !include dataTypes/bundles/PractitionerBundle.raml
-  ScheduleBundle:               !include dataTypes/bundles/ScheduleBundle.raml
-  SlotBundle:                   !include dataTypes/bundles/SlotBundle.raml
-
+types: 
+  AllergyIntollerance: !include dataTypes/resources/AllergyIntolerance.raml
+  Appointment: !include dataTypes/resources/Appointment.raml
+  Condition: !include dataTypes/resources/Condition.raml
+  Device: !include dataTypes/resources/Device.raml
+  DomainResource: !include dataTypes/resources/DomainResource.raml
+  Encounter: !include dataTypes/resources/Encounter.raml
+  Medication: !include dataTypes/resources/Medication.raml
+  MedicationRequest: !include dataTypes/resources/MedicationRequest.raml
+  Observation: !include dataTypes/resources/Observation.raml
+  Patient: !include dataTypes/resources/Patient.raml
+  Practitioner: !include dataTypes/resources/Practitioner.raml
+  Resource: !include dataTypes/resources/Resource.raml
+  Schedule: !include dataTypes/resources/Schedule.raml
+  Slot: !include dataTypes/resources/Slot.raml
 
 resourceTypes:
-  fhirResourceType:             !include resourceTypes/fhirResourceType.raml
-  fhirResource:                 !include resourceTypes/fhirResource.raml
-  fhirCompartment:              !include resourceTypes/fhirCompartment.raml
+  fhirResourceType:
+    post:
+      description: |
+        The create interaction creates a new resource in a server-assigned location. 
+        If the client wishes to have control over the id of a newly submitted resource, it should use the update interaction instead.
+      is: [create]
+      headers:
+        If-None-Exist:
+          required: false
+          description: name=value selective criteria
+      body:
+        application/json:
+          type: <<resourcePathName>>
+          example: <<postExample>>
+      responses:
+        200:
+          description: No match, resource created.
+        412:
+          description: Precondition Failed error indicating the client's criteria were not selective enough.
+    get:
+      description: This interaction searches a set of resources based on some filter criteria.
+      is: [search]
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourcePathName>>Bundle
+              example: <<getExample>>
+    put:
+      description: The conditional update interaction allows a client to update an existing resource based on some identification criteria, rather than by logical id.
+      is: [update, conditionalOperation]
+      queryParameters:
+      responses:
+        412:
+          description: |
+            Precondition Failed error indicating the client's criteria were not selective enough
+    delete:
+      description: The conditional delete interaction allows a client to delete an existing resource based on some selection criteria, rather than by a specific logical id.
+      is: [delete, conditionalOperation]
+      queryParameters:
+      responses:
+        404:
+          description: Not found
+        412:
+          description: Precondition Failed error indicating the client's criteria were not selective enough.
+  
+  fhirResource:
+    get:
+      description: The read interaction accesses the current contents of a resource.
+      is: [read]
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourcePathName>>
+              example: <<getSingleExample>>
+    put:
+      description: The update interaction creates a new current version for an existing resource or creates an initial version if no resource already exists for the given id.
+      is: [update]
+      body:
+        application/json:
+          type: <<resourcePathName>>
+          example: <<putExample>>
+    delete:
+      description: The delete interaction removes an existing resource.
+      is: [delete]
+
+  fhirCompartment:
+    get:
+      is: [search]
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<resourcePathName>>Bundle
+              example: <<example>>
+
   fhirSearch:                   !include resourceTypes/fhirSearch.raml
+
   fhirVersionedResource:        !include resourceTypes/fhirVersionedResource.raml
-  fhirHistory:                  !include resourceTypes/fhirHistory.raml
+
+  fhirHistory:
+    get:
+      description: The history interaction retrieves the history of either a particular resource or all resources of a given type.
+      is: [{history: { bundleName: <<bundleName>>}}]
+    
 
 traits:
-  vread:                        !include traits/vread.raml
-  read:                         !include traits/read.raml
-  update:                       !include traits/update.raml
-  delete:                       !include traits/delete.raml
-  create:                       !include traits/create.raml
-  search:                       !include traits/search.raml
-  history:                      !include traits/history.raml
-  conditionalOperation:         !include traits/conditionalOperation.raml
+  vread:
+    queryParameters:
+      _format:
+        required: false
+        enum: [application/json, application/xml]
+    responses:
+      200:
+        headers:
+          ETag: string
+          Last-Modified: string
+        body:
+          application/json:
+            type: <<resourceName>>
+
+  read:
+    queryParameters:
+      _format:
+        required: false
+        enum: [application/json, application/xml]
+      _summary:
+        required: false
+        enum: ['true', 'false', text, data]
+    headers:
+      If-Modified-Since:
+        type: string
+        required: false
+      If-None-Match:
+        required: false
+    responses:
+      304:
+        description: Not Modified
+        
+  update:
+    responses:
+      200:
+        description: Updated
+      201:
+        description: Created
+        headers:
+          Location:
+            example: http://xxx/condidition/123/_history/1
+          Last-Modified: datetime
+          ETag:
+            example: '1.0'
+      422:
+        description: |
+          Unprocessable Entity - the proposed resource violated applicable FHIR profiles or server business rules
+
+  delete:
+    responses:
+      204:
+        description: Deleted
+        
+  create:
+    responses:
+      201:
+        description: Created
+        headers:
+          Location:
+            example: http://xxx/Condidition/123/_history/1
+          Last-Modified: datetime
+          ETag:
+            example: '1.0'
+
+  search:
+    queryParameters: !include ./queryParams/searchParams.yaml
+    
+  history:
+    queryParameters:
+      _count: 
+        required: false
+      _since: 
+        required: false
+    responses:
+      200:
+        body:
+          application/json:
+            type: <<bundleName>>
+            
+  conditionalOperation:
+    queryParameters: !include ./queryParams/resourceParams.yaml
 
   # resource specific
   allergyIntoleranceSearch:
@@ -209,7 +290,7 @@ traits:
   delete:
     is: [ allergyIntoleranceSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: AllergyIntoleranceBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.AllergyIntoleranceBundle } }
     is: [ allergyIntoleranceSearch ]
   /{id}:
     type: {fhirResource: {
@@ -218,11 +299,11 @@ traits:
       }
     }
     /_history:
-      type: { fhirHistory: { bundleName: AllergyIntoleranceBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.AllergyIntoleranceBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: AllergyIntolerance } }
   /_search:
-    type: { fhirSearch: { bundleName: AllergyIntoleranceBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.AllergyIntoleranceBundle } }
     get:
       is: [ allergyIntoleranceSearch ]
     post:
@@ -241,7 +322,7 @@ traits:
   delete:
     is: [ appointmentSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: AppointmentBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.AppointmentBundle } }
     is: [ appointmentSearch ]
   /{id}:
     type: {fhirResource: {
@@ -250,11 +331,11 @@ traits:
       }
     }
     /_history:
-      type: { fhirHistory: { bundleName: AppointmentBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.AppointmentBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Appointment } }
   /_search:
-    type: { fhirSearch: { bundleName: AppointmentBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.AppointmentBundle } }
     get:
       is: [ appointmentSearch ]
     post:
@@ -273,7 +354,7 @@ traits:
   delete:
     is: [ conditionSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: ConditionBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.ConditionBundle } }
     is: [ conditionSearch ]
   /{id}:
     type: {fhirResource: {
@@ -283,11 +364,11 @@ traits:
     }
 
     /_history:
-      type: { fhirHistory: { bundleName: ConditionBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.ConditionBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Condition } }
   /_search:
-    type: { fhirSearch: { bundleName: ConditionBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.ConditionBundle } }
     get:
       is: [ conditionSearch ]
     post:
@@ -306,7 +387,7 @@ traits:
  delete:
    is: [ deviceSearch, conditionalOperation ]
  /_history:
-   type: { fhirHistory: { bundleName: DeviceBundle } }
+   type: { fhirHistory: { bundleName: FHIR_bundle_types.DeviceBundle } }
    is: [ deviceSearch ]
  /{id}:
    type: {fhirResource: {
@@ -315,11 +396,11 @@ traits:
       }
     }
    /_history:
-     type: { fhirHistory: { bundleName: DeviceBundle } }
+     type: { fhirHistory: { bundleName: FHIR_bundle_types.DeviceBundle } }
      /{vid}:
        type: { fhirVersionedResource: { resourceName: Device } }
  /_search:
-   type: { fhirSearch: { bundleName: DeviceBundle } }
+   type: { fhirSearch: { bundleName: FHIR_bundle_types.DeviceBundle } }
    get:
      is: [ deviceSearch ]
    post:
@@ -338,7 +419,7 @@ traits:
  delete:
    is: [ encounterSearch, conditionalOperation ]
  /_history:
-   type: { fhirHistory: { bundleName: EncounterBundle } }
+   type: { fhirHistory: { bundleName: FHIR_bundle_types.EncounterBundle } }
    is: [ encounterSearch ]
  /{id}:
    type: {fhirResource: {
@@ -347,11 +428,11 @@ traits:
       }
     }
    /_history:
-     type: { fhirHistory: { bundleName: EncounterBundle } }
+     type: { fhirHistory: { bundleName: FHIR_bundle_types.EncounterBundle } }
      /{vid}:
        type: { fhirVersionedResource: { resourceName: Encounter } }
  /_search:
-   type: { fhirSearch: { bundleName: EncounterBundle } }
+   type: { fhirSearch: { bundleName: FHIR_bundle_types.EncounterBundle } }
    get:
      is: [ encounterSearch ]
    post:
@@ -370,7 +451,7 @@ traits:
  delete:
    is: [ medicationSearch, conditionalOperation ]
  /_history:
-   type: { fhirHistory: { bundleName: MedicationBundle } }
+   type: { fhirHistory: { bundleName: FHIR_bundle_types.MedicationBundle } }
    is: [ medicationSearch ]
  /{id}:
    type: {fhirResource: {
@@ -379,11 +460,11 @@ traits:
       }
     }
    /_history:
-     type: { fhirHistory: { bundleName: MedicationBundle } }
+     type: { fhirHistory: { bundleName: FHIR_bundle_types.MedicationBundle } }
      /{vid}:
        type: { fhirVersionedResource: { resourceName: Medication } }
  /_search:
-   type: { fhirSearch: { bundleName: MedicationBundle } }
+   type: { fhirSearch: { bundleName: FHIR_bundle_types.MedicationBundle } }
    get:
      is: [ medicationSearch ]
    post:
@@ -391,8 +472,8 @@ traits:
 
 /MedicationRequest:
  type: {fhirResourceType: {
-      postExample : !include examples/requests/post_medicationRequest.json,
-      getExample  : !include examples/responses/get_medicationRequest.json,
+      postExample : !include examples/requests/post_medicationOrder.json,
+      getExample  : !include examples/responses/get_medicationOrder.json,
     }
   }
  get:
@@ -402,20 +483,20 @@ traits:
  delete:
    is: [ medicationRequestSearch, conditionalOperation ]
  /_history:
-   type: { fhirHistory: { bundleName: MedicationRequestBundle } }
+   type: { fhirHistory: { bundleName: FHIR_bundle_types.MedicationRequestBundle } }
    is: [ medicationRequestSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_medicationRequest_id.json,
-        putExample: !include examples/requests/put_medicationRequest_id.json
+        getSingleExample: !include examples/responses/get_medicationOrder_id.json,
+        putExample: !include examples/requests/put_medicationOrder_id.json
       }
     }
    /_history:
-     type: { fhirHistory: { bundleName: MedicationRequestBundle } }
+     type: { fhirHistory: { bundleName: FHIR_bundle_types.MedicationRequestBundle } }
      /{vid}:
        type: { fhirVersionedResource: { resourceName: MedicationRequest } }
  /_search:
-   type: { fhirSearch: { bundleName: MedicationRequestBundle } }
+   type: { fhirSearch: { bundleName: FHIR_bundle_types.MedicationRequestBundle } }
    get:
      is: [ medicationRequestSearch ]
    post:
@@ -434,7 +515,7 @@ traits:
  delete:
    is: [ observationSearch, conditionalOperation ]
  /_history:
-   type: { fhirHistory: { bundleName: ObservationBundle } }
+   type: { fhirHistory: { bundleName: FHIR_bundle_types.ObservationBundle } }
    is: [ observationSearch ]
  /{id}:
    type: {fhirResource: {
@@ -443,11 +524,11 @@ traits:
       }
     }
    /_history:
-     type: { fhirHistory: { bundleName: ObservationBundle } }
+     type: { fhirHistory: { bundleName: FHIR_bundle_types.ObservationBundle } }
      /{vid}:
        type: { fhirVersionedResource: { resourceName: Observation } }
  /_search:
-   type: { fhirSearch: { bundleName: ObservationBundle } }
+   type: { fhirSearch: { bundleName: FHIR_bundle_types.ObservationBundle } }
    get:
      is: [ observationSearch ]
    post:
@@ -469,7 +550,7 @@ traits:
   delete:
     is: [ patientSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: PatientBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.PatientBundle } }
     is: [ patientSearch ]
   /{id}:
     type: {fhirResource: {
@@ -478,7 +559,7 @@ traits:
       }
     }
     /_history:
-      type: { fhirHistory: { bundleName: PatientBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.PatientBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Patient } }
     /Condition:
@@ -488,7 +569,7 @@ traits:
       type: { fhirCompartment: { example: !include examples/responses/get_observation.json} }
       is: [ observationSearch ]
     /MedicationRequest:
-      type: { fhirCompartment: { example: !include examples/responses/get_MedicationRequest.json} }
+      type: { fhirCompartment: { example: !include examples/responses/get_MedicationOrder.json} }
       is: [ MedicationRequestSearch ]
     /Appointment:
       type: { fhirCompartment: { example: !include examples/responses/get_appointment.json} }
@@ -497,7 +578,7 @@ traits:
       type: { fhirCompartment: { example: !include examples/responses/get_allergyIntolerance.json} }
       is: [ allergyIntoleranceSearch ]
   /_search:
-    type: { fhirSearch: { bundleName: PatientBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.PatientBundle } }
     get:
       is: [ patientSearch ]
     post:
@@ -517,7 +598,7 @@ traits:
   delete:
     is: [ practitionerSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: PractitionerBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.PractitionerBundle } }
     is: [ practitionerSearch ]
   /{id}:
     type: {fhirResource: {
@@ -526,7 +607,7 @@ traits:
       }
     }
     /_history:
-      type: { fhirHistory: { bundleName: PractitionerBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.PractitionerBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Practitioner } }
     /Schedule:
@@ -536,7 +617,7 @@ traits:
       type: { fhirCompartment: { example: !include examples/responses/get_appointment.json} }
       is: [ appointmentSearch ]
   /_search:
-    type: { fhirSearch: { bundleName: PractitionerBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.PractitionerBundle } }
     get:
       is: [ practitionerSearch ]
     post:
@@ -555,7 +636,7 @@ traits:
   delete:
     is: [ scheduleSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: ScheduleBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.ScheduleBundle } }
     is: [ scheduleSearch ]
   /{id}:
     type: {fhirResource: {
@@ -564,11 +645,11 @@ traits:
       }
     }
     /_history:
-      type: { fhirHistory: { bundleName: ScheduleBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.ScheduleBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Schedule } }
   /_search:
-    type: { fhirSearch: { bundleName: ScheduleBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.ScheduleBundle } }
     get:
       is: [ scheduleSearch ]
     post:
@@ -587,7 +668,7 @@ traits:
   delete:
     is: [ slotSearch ]
   /_history:
-    type: { fhirHistory: { bundleName: SlotBundle } }
+    type: { fhirHistory: { bundleName: FHIR_bundle_types.SlotBundle } }
     is: [ slotSearch ]
   /{id}:
     type: {fhirResource: {
@@ -596,11 +677,11 @@ traits:
       }
     }
     /_history:
-      type: { fhirHistory: { bundleName: SlotBundle } }
+      type: { fhirHistory: { bundleName: FHIR_bundle_types.SlotBundle } }
       /{vid}:
         type: { fhirVersionedResource: { resourceName: Slot } }
   /_search:
-    type: { fhirSearch: { bundleName: SlotBundle } }
+    type: { fhirSearch: { bundleName: FHIR_bundle_types.SlotBundle } }
     get:
       is: [ slotSearch ]
     post:

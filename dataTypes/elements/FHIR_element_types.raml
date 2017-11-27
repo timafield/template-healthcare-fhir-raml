@@ -5,6 +5,13 @@ uses:
   FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
 
 types:
+  Element:
+    type: object
+    properties:
+      id?: FHIR_primitive_types.id
+      extension?:
+        type: array
+        items: Extension
 
   Schedule: !include ../resources/Schedule.raml
 
@@ -165,14 +172,6 @@ types:
   Duration:
     type: Quantity
     description: a length of time
-
-  Element:
-    type: object
-    properties:
-      id?: FHIR_primitive_types.id
-      extension?:
-        type: array
-        items: Extension
 
   Extension:
     description: |
