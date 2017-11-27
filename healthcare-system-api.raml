@@ -6,10 +6,10 @@ mediaType: [application/xml+fhir, application/json+fhir]
 
 
 uses: 
-  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
-  FHIR_element_types: ../primitives/FHIR_element_types.raml
-  FHIR_entry_types: ../primitives/FHIR_entry_types.raml
-  FHIR_bundle_types: ../primitives/FHIR_bundle_types.raml
+  FHIR_primitive_types: dataTypes/primitives/FHIR_primitive_types.raml
+  FHIR_element_types: dataTypes/elements/FHIR_element_types.raml
+  FHIR_entry_types: dataTypes/entries/FHIR_entry_types.raml
+  FHIR_bundle_types: dataTypes/bundles/FHIR_bundle_types.raml
 
 types: 
   AllergyIntollerance: !include dataTypes/resources/AllergyIntolerance.raml
