@@ -26,6 +26,12 @@
       _query:
         required: false
         description: Custom named query
+      _has:
+        required: false
+        description: Selecting resources based on the properties of resources that refer to them
+      _type:
+        required: false
+        description: Resource type
     #search result parameters
       _sort:
         required: false
@@ -42,6 +48,9 @@
       _summary:
         required: false
         description: Just return the summary elements (for resources where this is defined)
+      _elements:
+        required: false
+        description: Comma separated list of base element names
       _contained:
         required: false
         description: Whether to return resources contained in other resources in the search matches

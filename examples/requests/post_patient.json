@@ -12,7 +12,7 @@
     }
   ],
   "birthDate": "1970-02-12",
-  "careProvider": [
+  "generalPractitioner": [
     {
       "reference": "Practitioner/1"
     }

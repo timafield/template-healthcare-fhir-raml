@@ -2,12 +2,10 @@
     "resourceType": "MedicationOrder",
     "id": "5245",
     "status": "active",
-    "patient": {
+    "subject": {
       "reference": "Patient/1164365"
     },
-    "prescriber": {
-      "reference": "Practitioner/3656"
-    },
+    "intent": "proposal",
     "dosageInstruction": [
       {
         "text": "Take 3 mg by mouth Daily."

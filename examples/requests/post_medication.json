@@ -19,15 +19,13 @@
     ]
   },
   "isBrand": false,
-  "product": {
-    "form": {
-      "coding": [
-        {
-          "system": "http://snomed.info/sct",
-          "code": "385024007",
-          "display": "Oral Suspension"
-        }
-      ]
-    }
+  "form": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "385024007",
+        "display": "powder"
+      }
+    ]
   }
 }

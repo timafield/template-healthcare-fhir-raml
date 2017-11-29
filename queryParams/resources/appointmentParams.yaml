@@ -1,13 +1,23 @@
       actor:
         required: false
         description: Any one of the individuals participating in the appointment
+      appointment-type:
+        required: false
+        description: The style of appointment or patient that has been booked in the slot (not service type)
       date:
         required: false
         description: Appointment date/time
+      incomingreferral:
+        required: false
+        description: The ReferralRequest provided as information to allocate to the Encounter
       identifier:
         type: string|integer
         required: false
         description: An Identifier of the Appointment
+      part-status:
+        required: false
+        description: |
+          The Participation status of the subject, or other participant on the appointment. Can be used to locate participants that have not responded to meeting requests.
       location:
         required: false
         description: |
@@ -21,3 +31,6 @@
       status:
         required: false
         description: The overall status of the appointment
+      service-type:
+        required: false
+        description: The specific service that is to be performed during this appointment

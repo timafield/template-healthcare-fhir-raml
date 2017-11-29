@@ -17,7 +17,7 @@
 			"id": "354635",
 			"text": {
 				"status": "generated",
-				"div": "<div>Amoxicillin 250mg/5ml Suspension</div>"
+				"div": "<div>Amoxicillin 250mg tablets</div>"
 			},
 			"code": {
 				"coding": [
@@ -34,16 +34,14 @@
 				]
 			},
 			"isBrand": false,
-			"product": {
-				"form": {
-					"coding": [
-						{
-							"system": "http://snomed.info/sct",
-							"code": "385024007",
-							"display": "Oral Suspension"
-						}
-					]
-				}
+			"form": {
+				"coding": [
+					{
+						"system": "http://snomed.info/sct",
+						"code": "385024007",
+						"display": "tablets"
+					}
+				]
 			}
 		}
 	]

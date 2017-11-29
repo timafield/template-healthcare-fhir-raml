@@ -1,24 +1,43 @@
+      authoredon:
+        required: false
+        description: Return prescriptions written on this date
+      category:
+        required: false
+        description: Returns prescriptions with different categories
       code:
         required: false
         description: Return administrations of this medication code
-      datewritten: 
+      date:
         required: false
-        description: Return prescriptions written on this date
-      encounter:
+        description: Returns medication request to be administered on a specific date
+      context:
         required: false
-        description: Return prescriptions with this encounter identifier
+        description: Return prescriptions with this encounter or episode of care identifier
       identifier:
         type: string|integer
         required: false
         description: Return prescriptions with this external identifier
+      intended-dispenser:
+        required: false
+        description: Returns prescriptions intended to be dispensed by this Organization
+      intent:
+        required: false
+        description: Returns prescriptions with different intents
       medication:
         required: false
         description: Return administrations of this medication reference
       patient:
         required: false
         description: The identity of a patient to list orders for
-      prescriber:
+      priority:
         required: false
-        description: Who ordered the medication(s)
+        description: Returns prescriptions with different priorities
+      requester:
+        required: false
+        description: Returns prescriptions prescribed by this prescriber
+      subject:
+        required: false
+        description: The identity of a patient to list orders for
       status:
         required: false
+        description: Status of the prescription

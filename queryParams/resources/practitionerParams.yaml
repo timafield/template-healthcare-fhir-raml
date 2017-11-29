@@ -1,3 +1,6 @@
+      active:
+        required: false
+        description: Whether the practitioner record is active
       address:
         required: false
         description: An address in any kind of address/part
@@ -35,9 +38,6 @@
         type: string|integer
         required: false
         description: A practitioner's identifier
-      location:
-        required: false
-        description: One of the locations at which this practitioner provides care
       name:
         required: false
         description: A portion of either family or given name of the practitioner
@@ -50,9 +50,6 @@
       phonetic:
         required: false
         description: A portion of either family or given name using some kind of phonetic matching algorithm
-      specialty:
-        required: false
-        description: The practitioner has this specialty at an organization
       telecom:
         required: false
         description: The value in any kind of contact

@@ -13,6 +13,21 @@
       ingredient:
         required: false
         description: The product contained
+      ingredient-code:
+        required: false
+        description: The product contained
       manufacturer:
         required: false
         description: Manufacturer of the item
+      over-the-counter:
+        required: false
+        description: True if medication does not require a prescription
+      package-item:
+        required: false
+        description: The item in the package
+      package-item-code:
+        required: false
+        description: The item in the package
+      status:
+        required: false
+        description: active | inactive | entered-in-error

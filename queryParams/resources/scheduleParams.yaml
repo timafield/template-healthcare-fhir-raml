@@ -1,3 +1,6 @@
+      active:
+        required: false
+        description: Is the schedule in active use
       actor:
         required: false
         description: The individual(HealthcareService, Practitioner, Location, ...) to find a Schedule for

@@ -1,6 +1,3 @@
-      fb-type:
-        required: false
-        description: The free/busy status of the appointment
       schedule:
         required: false
         description: The Schedule Resource that we are seeking a slot within
@@ -14,3 +11,6 @@
       start:
         required: false
         description: Appointment date/time
+      status:
+        required: false
+        description: The free/busy status of the appointment
