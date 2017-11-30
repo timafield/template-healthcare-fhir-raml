@@ -1,9 +1,15 @@
       appointment:
         required: false
         description: The appointment that scheduled this encounter
-      condition: 
+      diagnosis:
         required: false
         description: Reason the encounter takes place (resource)
+      reason:
+        required: false
+        description: Reason the encounter takes place (resource)
+      class:
+        required: false
+        description: inpatient | outpatient | ambulatory | emergency
       date:
         required: false
         description: A date within the period the Encounter lasted
@@ -44,6 +50,9 @@
       practitioner:
         required: false
         description: Persons involved in the encounter other than the patient
+      service-provider:
+        required: false
+        description: The custodian organization of this Encounter record
       procedure:
         required: false
         description: Reason the encounter takes place (resource)
@@ -59,3 +68,6 @@
       type:
         required: false
         description: Specific type of encounter
+      subject:
+        required: false
+        description: The patient ro group present at the encounter

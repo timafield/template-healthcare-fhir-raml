@@ -1,6 +1,6 @@
 {
     "resourceType": "Condition",
-    "patient": {
+    "subject": {
       "reference": "Patient/9"
     },
     "asserter": {

@@ -29,7 +29,7 @@
           }
         ],
         "birthDate": "1970-02-12",
-        "careProvider": [
+        "generalPractitioner": [
           {
             "reference": "Practitioner/1"
           }
@@ -72,7 +72,7 @@
           }
         ],
         "birthDate": "1979-04-13",
-        "careProvider": [
+        "generalPractitioner": [
           {
             "reference": "Practitioner/1"
           }

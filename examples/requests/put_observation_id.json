@@ -1,16 +1,18 @@
 {
   "resourceType": "Observation",
   "id": "455454",
-  "status": "final",
-  "category": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/observation-category",
-        "code": "vital-signs",
-        "display": "Vital Signs"
-      }
-    ]
-  },
+  "status": "registered",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/observation-category",
+          "code": "vital-signs",
+          "display": "Vital Signs"
+        }
+      ]
+    }
+  ],
   "code": {
     "coding": [
       {
@@ -32,9 +34,6 @@
   },
   "subject": {
     "reference": "Patient/5646546"
-  },
-  "encounter": {
-    "reference": "Encounter/654654"
   },
   "valueQuantity": {
     "value": 185,

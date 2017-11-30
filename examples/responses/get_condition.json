@@ -17,7 +17,7 @@
       "resource": {
         "resourceType": "Condition",
         "id": "1",
-        "patient": {
+        "subject": {
           "reference": "Patient/9"
         },
         "asserter": {
@@ -42,7 +42,7 @@
       "resource": {
         "resourceType": "Condition",
         "id": "2",
-        "patient": {
+        "subject": {
           "reference": "Patient/9"
         },
         "asserter": {
@@ -67,7 +67,7 @@
       "resource": {
         "resourceType": "Condition",
         "id": "3",
-        "patient": {
+        "subject": {
           "reference": "Patient/9"
         },
         "asserter": {
@@ -92,7 +92,7 @@
       "resource": {
         "resourceType": "Condition",
         "id": "4",
-        "patient": {
+        "subject": {
           "reference": "Patient/9"
         },
         "asserter": {
@@ -117,7 +117,7 @@
       "resource": {
         "resourceType": "Condition",
         "id": "5",
-        "patient": {
+        "subject": {
           "reference": "Patient/9"
         },
         "asserter": {

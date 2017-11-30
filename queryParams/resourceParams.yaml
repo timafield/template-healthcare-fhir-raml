@@ -20,9 +20,6 @@
       _text:
         required: false
         description: Text search against the narrative
-      _list: 
-        required: false
-        description: All resources in nominated list (by id, not a full URL)
       _query:
         required: false
         description: Custom named query

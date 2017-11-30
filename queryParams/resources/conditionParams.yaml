@@ -1,3 +1,18 @@
+      abatement-age:
+        required: false
+        description: Abatement as age or age range
+      abatement-boolean:
+        required: false
+        description: Abatement boolean (boolean is true or non-boolean values are present)
+      abatement-date:
+        required: false
+        description: Date-related abatements (dateTime and period)
+      abatement-string:
+        required: false
+        description: Abatement as a string
+      asserted-date:
+        required: false
+        description: Date record was believed accurate
       asserter:
         required: false
         description: Person who asserts this condition
@@ -14,6 +29,9 @@
         type: integer
         required: false
         description: Code for the condition
+      context:
+        required: false
+        description: Encounter or episode when condition first asserted
       date-recorded:
         required: false
         description:  A date, when the Condition statement was documented
@@ -23,13 +41,19 @@
       evidence:
         required: false
         description: Manifestation/symptom
+      evidencedetail:
+        required: false
+        description: Supporting information found elsewhere
       identifier:
         type: string|integer
         required: false
         description: A unique identifier of the condition record
-      onset:
+      onset-date:
         required: false
         description: Date related onsets (dateTime and Period)
+      onset-age:
+        required: false
+        description: Onsets as age or age range
       onset-info:
         required: false
         description: Other onsets (boolean, age, range, string)
@@ -42,3 +66,9 @@
       stage:
         required: false
         description: Simple summary (disease specific)
+      subject:
+        required: false
+        description: Who has the condition?
+      verification-status:
+        required: false
+        description: provisional | differential | confirmed | refuted | entered-in-error | unknown

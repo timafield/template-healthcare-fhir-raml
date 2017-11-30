@@ -6,10 +6,10 @@ mediaType: [application/xml+fhir, application/json+fhir]
 
 
 uses: 
-  FHIR_primitive_types: ../primitives/FHIR_primitive_types.raml
-  FHIR_element_types: ../primitives/FHIR_element_types.raml
-  FHIR_entry_types: ../primitives/FHIR_entry_types.raml
-  FHIR_bundle_types: ../primitives/FHIR_bundle_types.raml
+  FHIR_primitive_types: dataTypes/primitives/FHIR_primitive_types.raml
+  FHIR_element_types: dataTypes/elements/FHIR_element_types.raml
+  FHIR_entry_types: dataTypes/entries/FHIR_entry_types.raml
+  FHIR_bundle_types: dataTypes/bundles/FHIR_bundle_types.raml
 
 types: 
   AllergyIntollerance: !include dataTypes/resources/AllergyIntolerance.raml
@@ -472,8 +472,8 @@ traits:
 
 /MedicationRequest:
  type: {fhirResourceType: {
-      postExample : !include examples/requests/post_medicationOrder.json,
-      getExample  : !include examples/responses/get_medicationOrder.json,
+      postExample : !include examples/requests/post_medicationRequest.json,
+      getExample  : !include examples/responses/get_medicationRequest.json,
     }
   }
  get:
@@ -487,8 +487,8 @@ traits:
    is: [ medicationRequestSearch ]
  /{id}:
    type: {fhirResource: {
-        getSingleExample: !include examples/responses/get_medicationOrder_id.json,
-        putExample: !include examples/requests/put_medicationOrder_id.json
+        getSingleExample: !include examples/responses/get_medicationRequest_id.json,
+        putExample: !include examples/requests/put_medicationRequest_id.json
       }
     }
    /_history:
@@ -569,7 +569,7 @@ traits:
       type: { fhirCompartment: { example: !include examples/responses/get_observation.json} }
       is: [ observationSearch ]
     /MedicationRequest:
-      type: { fhirCompartment: { example: !include examples/responses/get_MedicationOrder.json} }
+      type: { fhirCompartment: { example: !include examples/responses/get_MedicationRequest.json} }
       is: [ MedicationRequestSearch ]
     /Appointment:
       type: { fhirCompartment: { example: !include examples/responses/get_appointment.json} }

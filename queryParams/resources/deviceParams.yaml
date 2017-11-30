@@ -1,3 +1,6 @@
+      device-name:
+        required: false
+        description: A server defined search that may match any of the string fields in the Device.udi.name or Device.type.coding.display or Device.type.text
       identifier:
         type: string|integer
         required: false
@@ -17,12 +20,18 @@
       patient:
         required: false
         description: Patient information, if the resource is affixed to a person
+      status:
+        required: false
+        description: active | inactive | entered-in-error | unknown
       type:
         required: false
         description: The type of the device
-      udi:
+      udi-carrier:
         required: false
-        description: FDA mandated Unique Device Identifier
+        description: UDI Barcode (RFID or other technology) string either in HRF format or AIDC format converted to base64 string.
+      udi-di:
+        required: false
+        description: The udi Device Identifier (DI)
       url:
         required: false
         description: Network address to contact device

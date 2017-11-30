@@ -16,20 +16,21 @@
       "fullUrl": "http://localhost:8081/api/AllergyIntolerance/1",
       "resource": {
         "resourceType": "AllergyIntolerance",
-        "id": "1",
+        "id": 1,
         "patient": {
           "reference": "Patient/9"
         },
-        "reporter": {
-          "reference": "Patient/9"
-        },
-        "substance": {
-          "coding": [
-            {
-              "display": "Peanuts"
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "display": "Peanuts"
+                }
+              ]
             }
-          ]
-        },
+          }
+        ],
         "recordedDate": "2016-05-11",
         "status": "confirmed"
       }
@@ -42,16 +43,17 @@
         "patient": {
           "reference": "Patient/9"
         },
-        "reporter": {
-          "reference": "Patient/9"
-        },
-        "substance": {
-          "coding": [
-            {
-              "display": "Aspirin"
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "display": "Aspirin"
+                }
+              ]
             }
-          ]
-        },
+          }
+        ],
         "recordedDate": "2016-05-11",
         "status": "refuted"
       }
@@ -64,16 +66,17 @@
         "patient": {
           "reference": "Patient/9"
         },
-        "reporter": {
-          "reference": "Patient/9"
-        },
-        "substance": {
-          "coding": [
-            {
-              "display": "Penicillin"
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "display": "Penicillin"
+                }
+              ]
             }
-          ]
-        },
+          }
+        ],
         "recordedDate": "2016-05-11",
         "status": "unconfirmed"
       }
@@ -86,16 +89,17 @@
         "patient": {
           "reference": "Patient/9"
         },
-        "reporter": {
-          "reference": "Patient/9"
-        },
-        "substance": {
-          "coding": [
-            {
-              "display": "Gluten"
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "display": "Gluten"
+                }
+              ]
             }
-          ]
-        },
+          }
+        ],
         "recordedDate": "2016-05-11",
         "status": "unconfirmed"
       }
@@ -108,16 +112,17 @@
         "patient": {
           "reference": "Patient/9"
         },
-        "reporter": {
-          "reference": "Patient/9"
-        },
-        "substance": {
-          "coding": [
-            {
-              "display": "Dairy products"
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "display": "Dairy products"
+                }
+              ]
             }
-          ]
-        },
+          }
+        ],
         "recordedDate": "2016-05-11",
         "status": "unconfirmed"
       }
@@ -130,16 +135,17 @@
         "patient": {
           "reference": "Patient/9"
         },
-        "reporter": {
-          "reference": "Patient/9"
-        },
-        "substance": {
-          "coding": [
-            {
-              "display": "Morphine"
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "display": "Morphine"
+                }
+              ]
             }
-          ]
-        },
+          }
+        ],
         "recordedDate": "2016-05-11",
         "status": "unconfirmed"
       }
