@@ -2,7 +2,7 @@
     "resourceType": "MedicationOrder",
     "id": "5245",
     "status": "active",
-    "patient": {
+    "subject": {
       "reference": "Patient/1164365"
     },
     "intent": "proposal",
@@ -12,7 +12,7 @@
       },
       {
         "doseQuantity": {
-          "value": "3",
+          "value": 3,
           "unit": "mg",
           "system": "http://unitsofmeasure.org",
           "code": "mg"
