@@ -1,11 +1,17 @@
 {
 	"resourceType": "AllergyIntolerance",
-	"id": 1,
+	"id": "1",
 	"patient": {
 		"reference": "Patient/9"
 	},
+  "verificationStatus": "confirmed",
 	"reaction": [
 		{
+      "manifestation": [
+        {
+          "text": "symptoms"
+        }
+      ],
 			"substance": {
 				"coding": [
 					{

@@ -3,8 +3,14 @@
 	"patient": {
 		"reference": "Patient/9"
 	},
+  "verificationStatus": "confirmed",
 	"reaction": [
 		{
+			"manifestation": [
+        {
+          "text": "symptoms"
+        }
+      ],
 			"substance": {
 				"coding": [
 					{

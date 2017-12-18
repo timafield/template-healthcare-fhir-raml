@@ -12,7 +12,7 @@ uses:
   FHIR_bundle_types: dataTypes/bundles/FHIR_bundle_types.raml
 
 types: 
-  AllergyIntollerance: !include dataTypes/resources/AllergyIntolerance.raml
+  AllergyIntolerance: !include dataTypes/resources/AllergyIntolerance.raml
   Appointment: !include dataTypes/resources/Appointment.raml
   Condition: !include dataTypes/resources/Condition.raml
   Device: !include dataTypes/resources/Device.raml
@@ -40,7 +40,6 @@ resourceTypes:
           description: name=value selective criteria
       body:
         application/json:
-          type: <<resourcePathName>>
           example: <<postExample>>
       responses:
         200:
@@ -54,7 +53,6 @@ resourceTypes:
         200:
           body:
             application/json:
-              type: <<resourcePathName>>Bundle
               example: <<getExample>>
     put:
       description: The conditional update interaction allows a client to update an existing resource based on some identification criteria, rather than by logical id.
@@ -82,14 +80,12 @@ resourceTypes:
         200:
           body:
             application/json:
-              type: <<resourcePathName>>
               example: <<getSingleExample>>
     put:
       description: The update interaction creates a new current version for an existing resource or creates an initial version if no resource already exists for the given id.
       is: [update]
       body:
         application/json:
-          type: <<resourcePathName>>
           example: <<putExample>>
     delete:
       description: The delete interaction removes an existing resource.
@@ -102,12 +98,33 @@ resourceTypes:
         200:
           body:
             application/json:
-              type: <<resourcePathName>>Bundle
               example: <<example>>
 
-  fhirSearch:                   !include resourceTypes/fhirSearch.raml
+  fhirSearch:
+    post:
+      description: This interaction searches a set of resources based on some filter criteria.
+      body:
+        application/x-www-form-urlencoded:
+          properties: !include ../queryParams/searchParams.yaml
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<bundleName>>
+    get:
+      description: This interaction searches a set of resources based on some filter criteria.
+    #  is: [{search: { bundleName: <<bundleName>>}}]
+    #  is: [search]
+      responses:
+        200:
+          body:
+            application/json:
+              type: <<bundleName>>
 
-  fhirVersionedResource:        !include resourceTypes/fhirVersionedResource.raml
+  fhirVersionedResource:
+    get:
+      description: The vread interaction preforms a version specific read of the resource.
+      is: [vread: { resourceName: <<resourceName>> }]
 
   fhirHistory:
     get:
@@ -569,8 +586,8 @@ traits:
       type: { fhirCompartment: { example: !include examples/responses/get_observation.json} }
       is: [ observationSearch ]
     /MedicationRequest:
-      type: { fhirCompartment: { example: !include examples/responses/get_MedicationRequest.json} }
-      is: [ MedicationRequestSearch ]
+      type: { fhirCompartment: { example: !include examples/responses/get_medicationRequest.json} }
+      is: [ medicationRequestSearch ]
     /Appointment:
       type: { fhirCompartment: { example: !include examples/responses/get_appointment.json} }
       is: [ appointmentSearch ]

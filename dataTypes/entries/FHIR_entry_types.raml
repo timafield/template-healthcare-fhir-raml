@@ -43,7 +43,7 @@ types:
           etag?: string
           lastModified?: FHIR_primitive_types.instant
   
-  AllergyIntollerance: !include ../resources/AllergyIntolerance.raml
+  AllergyIntolerance: !include ../resources/AllergyIntolerance.raml
   Appointment: !include ../resources/Appointment.raml
   Condition: !include ../resources/Condition.raml
   Device: !include ../resources/Device.raml
@@ -61,7 +61,7 @@ types:
   AllergyIntoleranceEntry:
     type: Entry
     properties:
-      resource?: AllergyIntollerance
+      resource?: AllergyIntolerance
 
   AppointmentEntry:
     type: Entry

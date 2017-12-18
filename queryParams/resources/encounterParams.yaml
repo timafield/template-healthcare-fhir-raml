@@ -56,9 +56,6 @@
       procedure:
         required: false
         description: Reason the encounter takes place (resource)
-      reason:
-        required: false
-        description: Reason the encounter takes place (code)
       special-arrangement:
         required: false
         description: Wheelchair, translator, stretcher, etc.
