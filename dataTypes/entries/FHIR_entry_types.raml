@@ -42,78 +42,63 @@ types:
           location?: FHIR_primitive_types.uri
           etag?: string
           lastModified?: FHIR_primitive_types.instant
-  
-  AllergyIntolerance: !include ../resources/AllergyIntolerance.raml
-  Appointment: !include ../resources/Appointment.raml
-  Condition: !include ../resources/Condition.raml
-  Device: !include ../resources/Device.raml
-  DomainResource: !include ../resources/DomainResource.raml
-  Encounter: !include ../resources/Encounter.raml
-  Medication: !include ../resources/Medication.raml
-  MedicationRequest: !include ../resources/MedicationRequest.raml
-  Observation: !include ../resources/Observation.raml
-  Patient: !include ../resources/Patient.raml
-  Practitioner: !include ../resources/Practitioner.raml
-  Resource: !include ../resources/Resource.raml
-  Schedule: !include ../resources/Schedule.raml
-  Slot: !include ../resources/Slot.raml
 
   AllergyIntoleranceEntry:
     type: Entry
     properties:
-      resource?: AllergyIntolerance
+      resource?: !include ../resources/AllergyIntolerance.raml
 
   AppointmentEntry:
     type: Entry
     properties:
-      resource?: Appointment
+      resource?: !include ../resources/Appointment.raml
 
   ConditionEntry:
     type: Entry
     properties:
-      resource?: Condition
+      resource?: !include ../resources/Condition.raml
 
   DeviceEntry:
     type: Entry
     properties:
-      resource?: Device
+      resource?: !include ../resources/Device.raml
 
   EncounterEntry:
     type: Entry
     properties:
-      resource?: Encounter
+      resource?: !include ../resources/Encounter.raml
 
   MedicationEntry:
     type: Entry
     properties:
-      resource?: Medication
+      resource?: !include ../resources/Medication.raml
 
   MedicationRequestEntry:
     type: Entry
     properties:
-      resource?: MedicationRequest
+      resource?: !include ../resources/MedicationRequest.raml
 
   ObservationEntry:
     type: Entry
     properties:
-      resource?: Observation
+      resource?: !include ../resources/Observation.raml
 
   PatientEntry:
     type: Entry
     properties:
-      resource?: Patient
+      resource?: !include ../resources/Patient.raml
 
   PractitionerEntry:
     type: Entry
     properties:
-      resource?: Practitioner
+      resource?: !include ../resources/Practitioner.raml
 
   ScheduleEntry:
     type: Entry
     properties:
-      resource?: Schedule
+      resource?: !include ../resources/Schedule.raml
 
   SlotEntry:
     type: Entry
     properties:
-      resource?: Slot
+      resource?: !include ../resources/Slot.raml
