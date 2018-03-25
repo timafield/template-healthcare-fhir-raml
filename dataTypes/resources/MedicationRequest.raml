@@ -22,17 +22,17 @@ properties:
     enum: [routine, urgent, stat, asap]
   /^medication(CodeableConcept|Reference)$/: CodeableConcept | Reference # Medication
   subject: Reference # Patient, Group
-  context: Reference # Encounter, EpisodeOfCare
-  supportingInformation: Reference[] # Any
-  authoredOn: dateTime
-  requester:
+  context?: Reference # Encounter, EpisodeOfCare
+  supportingInformation?: Reference[] # Any
+  authoredOn?: dateTime
+  requester?:
     type: BackboneElement
     properties:
       agent: Reference # Practitioner, Organization, Patient, RelatedPerson, Device
-      onBehalfOf: Reference # Organization
-  recorder: Reference # Practitioner
-  reasonCode: CodableConcept[]
-  reasonReference: Reference[] # Condition, Observation
+      onBehalfOf?: Reference # Organization
+  recorder?: Reference # Practitioner
+  reasonCode?: CodableConcept[]
+  reasonReference?: Reference[] # Condition, Observation
   note?: string
   dosageInstruction?: Dosage[]
   dispenseRequest?:
