@@ -6,26 +6,24 @@
 type: DomainResource
 properties:
   code?: CodeableConcept
+  status?:
+    type: code
+    enum: [active, inactive, entered-in-error]
   isBrand?: boolean
-  manufacturer?: Reference
-  product?:
-    type: BackboneElement
-    properties:
-      form?: CodeableConcept
-      ingredient?:
-        type: array
-        items:
-          type: BackboneElement
-          properties:
-            item: Reference
-            amount?: Ratio
-      batch?:
-        type: array
-        items:
-          type: BackboneElement
-          properties:
-            lotNumber?: string
-            expirationDate?: dateTime
+  isOverTheCounter?: boolean
+  manufacturer?: Reference # Organization
+  form?: 
+    type: CodeableConcept # example powder, tablets, capsule
+    enum: [powder, tablets, capsule]
+  ingredient?:
+    type: array
+    items:
+      type: BackboneElement
+      properties:
+        itemCodeableConcept?: CodeableConcept
+        itemReference?: Reference
+        isActive?: boolean
+        amount?: Ratio
   package?:
     type: BackboneElement
     properties:
@@ -35,3 +33,14 @@ properties:
         properties:
           item: Reference
           amount?: SimpleQuantity
+      batch?:
+        type: array
+        items:
+          type: BackboneElement
+          properties:
+            lotNumber?: string
+            expirationDate?: dateTime
+  image?:
+    type: Array
+    items:
+      type: Attachment
